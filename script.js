@@ -1,53 +1,133 @@
-// Theme toggle with localStorage persistence
-const root = document.documentElement;
-const toggle = document.getElementById('themeToggle');
-const stored = localStorage.getItem('theme');
-if (stored) root.setAttribute('data-theme', stored);
+// karthickrajan.com — behaviour. No dependencies, no trackers.
+(function () {
+  'use strict';
+  var root = document.documentElement;
 
-toggle.addEventListener('click', () => {
-  const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  root.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-});
+  // ---------- Skin switch (persisted per browser) ----------
+  var SKINS = { dial: 'Xeno-Dial', grimoire: 'Grimoire' };
+  var skinToggle = document.getElementById('skinToggle');
+  var skinLabel = document.getElementById('skinLabel');
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
 
-// Footer year
-document.getElementById('year').textContent = new Date().getFullYear();
+  function applySkin(skin) {
+    root.setAttribute('data-skin', skin);
+    if (skinLabel) skinLabel.textContent = SKINS[skin];
+    if (themeMeta) themeMeta.setAttribute('content', skin === 'grimoire' ? '#0c090d' : '#050805');
+    if (skinToggle) skinToggle.setAttribute('aria-label', 'Theme: ' + SKINS[skin] + '. Switch theme');
+  }
+  applySkin(root.getAttribute('data-skin') === 'grimoire' ? 'grimoire' : 'dial');
 
-// Reveal on scroll
-const revealTargets = document.querySelectorAll(
-  '.section-head, .about-text, .about-stats .stat, .skill-card, .tl-item, .project-card, .edu-card, .cert-card, .contact-card'
-);
-revealTargets.forEach(el => el.classList.add('reveal'));
+  if (skinToggle) {
+    skinToggle.addEventListener('click', function () {
+      var next = root.getAttribute('data-skin') === 'grimoire' ? 'dial' : 'grimoire';
+      applySkin(next);
+      try { localStorage.setItem('skin', next); } catch (e) { /* storage unavailable */ }
+    });
+  }
 
-const io = new IntersectionObserver(
-  entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
+  // ---------- Mobile menu ----------
+  var burger = document.getElementById('navBurger');
+  var links = document.getElementById('navLinks');
+  if (burger && links) {
+    burger.addEventListener('click', function () {
+      var open = links.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', String(open));
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        links.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
       }
     });
-  },
-  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-);
-revealTargets.forEach(el => io.observe(el));
+  }
 
-// Active nav link highlight
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-const navObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          link.style.color = link.getAttribute('href') === `#${id}`
-            ? 'var(--text)'
-            : '';
-        });
-      }
+  // ---------- Footer year ----------
+  var year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+
+  // ---------- Field-note filters ----------
+  var filters = Array.prototype.slice.call(document.querySelectorAll('.filter'));
+  var notes = Array.prototype.slice.call(document.querySelectorAll('.note'));
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var cat = btn.getAttribute('data-filter');
+      filters.forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-pressed', String(on));
+      });
+      notes.forEach(function (n) {
+        n.hidden = !(cat === 'all' || n.getAttribute('data-cat') === cat);
+        if (!n.hidden) n.classList.add('visible');
+      });
     });
-  },
-  { rootMargin: '-40% 0px -55% 0px' }
-);
-sections.forEach(s => navObserver.observe(s));
+  });
+
+  // ---------- Skills selector ----------
+  var wrap = document.getElementById('skillsWrap');
+  var dial = document.getElementById('dial');
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.skill-group'));
+  var dialTitle = document.getElementById('dialTitle');
+  var dialCount = document.getElementById('dialCount');
+  var current = 0;
+  var buttons = [];
+
+  function selectGroup(i) {
+    current = (i + groups.length) % groups.length;
+    groups.forEach(function (g, idx) { g.classList.toggle('is-on', idx === current); });
+    buttons.forEach(function (b, idx) {
+      b.classList.toggle('is-on', idx === current);
+      b.setAttribute('aria-pressed', String(idx === current));
+    });
+    var g = groups[current];
+    if (dialTitle) dialTitle.textContent = g.querySelector('h3').textContent;
+    if (dialCount) dialCount.textContent = (current + 1) + ' / ' + groups.length;
+  }
+
+  if (wrap && dial && groups.length) {
+    groups.forEach(function (g, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'dial-btn';
+      b.style.setProperty('--i', i * (12 / groups.length));
+      b.textContent = g.getAttribute('data-code');
+      b.setAttribute('aria-label', g.querySelector('h3').textContent);
+      b.addEventListener('click', function () { selectGroup(i); });
+      dial.appendChild(b);
+      buttons.push(b);
+    });
+    dial.removeAttribute('aria-hidden');
+    wrap.classList.add('has-dial');
+    document.getElementById('dialPrev').addEventListener('click', function () { selectGroup(current - 1); });
+    document.getElementById('dialNext').addEventListener('click', function () { selectGroup(current + 1); });
+    dial.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { selectGroup(current + 1); buttons[current].focus(); e.preventDefault(); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { selectGroup(current - 1); buttons[current].focus(); e.preventDefault(); }
+    });
+    selectGroup(0);
+  }
+
+  // ---------- Reveal on scroll + active nav link ----------
+  if (!('IntersectionObserver' in window)) return;
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    var targets = document.querySelectorAll('.section-head, .case, .note, .paper, .ideas, .tl-item, .cred-col, .method, .contact-card, .skills-wrap');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    Array.prototype.forEach.call(targets, function (el) { el.classList.add('reveal'); io.observe(el); });
+  }
+
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+  var navObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      navLinks.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  Array.prototype.forEach.call(document.querySelectorAll('main section[id]'), function (s) { navObserver.observe(s); });
+})();
