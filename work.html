@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="dial">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — Karthick Raja Chinnathambi</title>
+  <meta name="description" content="Selected platform, gateway, FinOps and database work, plus root-cause field notes." />
+  <meta name="author" content="Karthick Raja Chinnathambi" />
+  <link rel="canonical" href="https://karthickrajan.com/work.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://karthickrajan.com/work.html" />
+  <meta property="og:title" content="Work — Karthick Raja Chinnathambi" />
+  <meta property="og:description" content="Logging platforms, API gateways, FinOps, incident forensics, and research on the audit cost of AI safety guarantees." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#050805" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23050805'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%237dff4f' stroke-width='4'/%3E%3Ctext x='32' y='40' font-family='monospace' font-size='20' font-weight='700' text-anchor='middle' fill='%237dff4f'%3EKR%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Cinzel:wght@500;600;700&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Apply the saved skin before first paint
+    try { var s = localStorage.getItem('skin'); if (s === 'grimoire' || s === 'dial' || s === 'nightfall') document.documentElement.setAttribute('data-skin', s); } catch (e) {}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Karthick Raja Chinnathambi",
+    "url": "https://karthickrajan.com/",
+    "jobTitle": "DevOps Manager & Solution Architect — Cloud, Platform Engineering & DevSecOps",
+    "worksFor": { "@type": "Organization", "name": "Tonik Digital Bank" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "SRM Institute of Science and Technology" },
+      { "@type": "CollegeOrUniversity", "name": "Anna University" }
+    ],
+    "knowsAbout": ["AWS", "Google Cloud", "Kong API Gateway", "Grafana Loki", "DevSecOps", "FinOps", "Terraform", "Incident forensics", "Statistical risk control"],
+    "sameAs": ["https://www.linkedin.com/in/karthickraja", "https://github.com/damianwayne7"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">KR</span>
+        <span class="brand-name">karthickrajan<span class="dot">.</span>com</span>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html" class="is-active" aria-current="page">Work</a></li>
+        <li><a href="ai.html">AI &amp; ML</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="drone.html">Drone</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button id="skinToggle" class="skin-toggle" aria-label="Switch visual theme">
+        <span class="skin-ico" aria-hidden="true"></span>
+        <span class="skin-label" id="skinLabel">Xeno-Dial</span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <section id="work" class="section page-first">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-n="01" data-r="I">Selected work</span>
+        <h2>Platforms built, systems fixed.</h2>
+        <p class="section-sub">Public-safe summary: no internal names, hostnames or customer data.</p>
+      </div>
+      <div class="briefs">
+        <article class="brief" id="logging">
+          <span class="case-tag">Observability · 2026</span>
+          <h3>Self-hosted logging platform on Grafana Loki</h3>
+          <p class="brief-line">Replaced a costly managed log service without losing production alerting.</p>
+          <ul class="chips"><li><b>−0.06%</b> line-count difference</li><li><b>0</b> logs dropped</li><li><b>52/52</b> alarms healthy</li><li><b>−80%</b> bytes on the wire</li></ul>
+          <ul class="tech-tags"><li>Grafana Loki</li><li>LogQL</li><li>Fluent Bit</li><li>ECS Fargate</li><li>S3</li><li>Lambda autoscaler</li><li>Terraform</li></ul>
+        </article>
+        <article class="brief" id="gateway">
+          <span class="case-tag">API gateway · 2026</span>
+          <h3>API gateway from Kubernetes to ECS</h3>
+          <p class="brief-line">Moved Kong and its custom plugins one environment at a time, production last.</p>
+          <ul class="chips"><li><b>44/44</b> status-code parity</li><li><b>2–4 ms</b> vs 8–16 ms before</li><li>Counts <b>equal to source</b></li><li>Rolling hostname change</li></ul>
+          <ul class="tech-tags"><li>Kong OSS</li><li>Lua</li><li>ECS Fargate</li><li>RDS PostgreSQL</li><li>ALB OIDC</li><li>Entra ID</li><li>Cloudflare</li><li>CodePipeline</li></ul>
+        </article>
+        <article class="brief" id="finops">
+          <span class="case-tag">FinOps · 2026</span>
+          <h3>Cloud bill audit and cost agents</h3>
+          <p class="brief-line">Took the bill apart line by line and built agents that keep doing it.</p>
+          <ul class="chips"><li><b>12</b> agents, 3 review stages</li><li><b>225</b> recommendations, 52 filtered out</li><li><b>Double-digit</b> share identified</li><li>Off-hours shutdown</li></ul>
+          <ul class="tech-tags"><li>Cost Explorer</li><li>Savings Plans</li><li>CloudTrail attribution</li><li>Tagging</li><li>EventBridge</li><li>AI agents</li></ul>
+        </article>
+        <article class="brief" id="database">
+          <span class="case-tag">Database delivery · 2026</span>
+          <h3>Ordered, checked, reversible database changes</h3>
+          <p class="brief-line">Liquibase as the system of record, with lint rules, drift detection and a hash-verified plan. Proof of concept.</p>
+          <ul class="chips"><li><b>56/56</b> automated checks</li><li><b>14</b> lint rules</li><li>Drift caught in <b>24 h</b></li></ul>
+          <ul class="tech-tags"><li>Liquibase</li><li>MySQL 8.4</li><li>Docker</li><li>Bash</li></ul>
+        </article>
+        <article class="brief" id="assistant">
+          <span class="case-tag">AI platform · 2026</span>
+          <h3>Serving platform for a banking chat assistant</h3>
+          <p class="brief-line">Retrieval, embeddings and a self-hosted language model on GPU, in test. <a class="ai-link" href="ai.html">Details on the AI &amp; ML page &rarr;</a></p>
+          <ul class="chips"><li><b>~26 s → 1–3 s</b> on GPU</li><li><b>0.1–0.3 s</b> matched answers</li><li>Blue/green with rollback</li></ul>
+          <ul class="tech-tags"><li>RAG</li><li>pgvector</li><li>GPU on ECS</li><li>Redis Stack</li><li>SQS / Lambda</li><li>CloudFront</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="more" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-n="02" data-r="II">Field notes</span>
+        <h2>Root causes and designs.</h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filter field notes">
+        <button class="filter is-on" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="rca" aria-pressed="false">Root cause</button>
+        <button class="filter" data-filter="platform" aria-pressed="false">Platform</button>
+        <button class="filter" data-filter="design" aria-pressed="false">Design</button>
+      </div>
+      <div class="notes-grid" id="notes">
+        <article class="note" data-cat="rca">
+          <span class="note-tag">Root cause</span>
+          <h3>A service advertised before it was listening</h3>
+          <p>Service discovery published an address before the process accepted connections.</p>
+        </article>
+        <article class="note" data-cat="rca">
+          <span class="note-tag">Root cause</span>
+          <h3>A database password that rotated itself</h3>
+          <p>Containers read secrets only at launch, so rotation broke running tasks.</p>
+        </article>
+        <article class="note" data-cat="rca">
+          <span class="note-tag">Root cause</span>
+          <h3>Gateway timeouts that were not the load balancer</h3>
+          <p>A database stall cascading through connection pools, proven with a negative control.</p>
+        </article>
+        <article class="note" data-cat="rca">
+          <span class="note-tag">Root cause</span>
+          <h3>A function that timed out silently</h3>
+          <p>Memory was the CPU throttle: 2 s locally, over 60 s on the platform.</p>
+        </article>
+        <article class="note" data-cat="rca">
+          <span class="note-tag">Root cause</span>
+          <h3>A batch job that more CPU could not speed up</h3>
+          <p>Strictly serial and latency-bound. The fix was a claim step, not a bigger task.</p>
+        </article>
+        <article class="note" data-cat="rca">
+          <span class="note-tag">Root cause</span>
+          <h3>"Rename failed: access denied" on uploads</h3>
+          <p>Rename is copy then delete, and the role could not delete.</p>
+        </article>
+        <article class="note" data-cat="rca">
+          <span class="note-tag">Root cause</span>
+          <h3>CI jobs queued for a day, then cancelled</h3>
+          <p>Self-updating runners exited mid-assignment. Pinned the version.</p>
+        </article>
+        <article class="note" data-cat="rca">
+          <span class="note-tag">Root cause</span>
+          <h3>Deleting a route did not disable the endpoint</h3>
+          <p>A broader prefix route still matched. Read the router source to prove it.</p>
+        </article>
+        <article class="note" data-cat="rca">
+          <span class="note-tag">Root cause</span>
+          <h3>A capacity debate about the wrong variable</h3>
+          <p>The limit was keys that never expire, not the engine version.</p>
+        </article>
+        <article class="note" data-cat="platform">
+          <span class="note-tag">Platform</span>
+          <h3>Infrastructure-as-code redesign</h3>
+          <p>Versioned Terraform modules plus one YAML file per service.</p>
+        </article>
+        <article class="note" data-cat="platform">
+          <span class="note-tag">Platform</span>
+          <h3>A backend that migrates its own schema on boot</h3>
+          <p>Added a health check, a deployment circuit breaker and rollback.</p>
+        </article>
+        <article class="note" data-cat="platform">
+          <span class="note-tag">Platform</span>
+          <h3>Internal build and release portal</h3>
+          <p>Platform side of a release-governance dashboard: build once, promote everywhere.</p>
+        </article>
+        <article class="note" data-cat="platform">
+          <span class="note-tag">Platform</span>
+          <h3>Webhook ingestion on Google Cloud</h3>
+          <p>Cloud Run to Pub/Sub to BigQuery behind a global load balancer.</p>
+        </article>
+        <article class="note" data-cat="platform">
+          <span class="note-tag">Platform</span>
+          <h3>Sprint capacity reporting</h3>
+          <p>Automated per-person load and epic roll-up for the team I manage.</p>
+        </article>
+        <article class="note" data-cat="design">
+          <span class="note-tag">Design</span>
+          <h3>Six ways to schedule a one-off callback</h3>
+          <p>A managed scheduler at $1.64 a month against $39.77 for a workflow engine.</p>
+        </article>
+        <article class="note" data-cat="design">
+          <span class="note-tag">Design</span>
+          <h3>Where to keep chatbot conversation history</h3>
+          <p>Five designs costed over five years at three volumes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>&copy; <span id="year">2026</span> Karthick Raja Chinnathambi</div>
+      <div class="footer-meta footer-quotes">
+        <span class="fq" data-for="dial">&ldquo;It&rsquo;s hero time!&rdquo; <cite>Ben 10</cite></span>
+        <span class="fq" data-for="grimoire">&ldquo;Surpass your limits. Right here, right now.&rdquo; <cite>Yami Sukehiro, Black Clover</cite></span>
+        <span class="fq" data-for="nightfall">&ldquo;Arise.&rdquo; <cite>Sung Jinwoo, Solo Leveling</cite></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

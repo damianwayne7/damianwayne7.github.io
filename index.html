@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Karthick Raja Chinnathambi — Cloud, Platform &amp; DevSecOps Architect</title>
-  <meta name="description" content="DevOps Manager and Solution Architect for cloud, platform engineering and DevSecOps at a digital bank. Logging platforms, API gateways, FinOps, incident forensics, and M.Tech research on the audit cost of AI safety guarantees." />
+  <title>Karthick Raja Chinnathambi — DevOps Manager, Cloud, Security &amp; AI</title>
+  <meta name="description" content="DevOps Manager and Solution Architect: cloud platforms, DevSecOps, mobile security, AI and ML, drone engineering, and research submitted to IEEE TDSC." />
   <meta name="author" content="Karthick Raja Chinnathambi" />
   <link rel="canonical" href="https://karthickrajan.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://karthickrajan.com/" />
-  <meta property="og:title" content="Karthick Raja Chinnathambi — Cloud, Platform &amp; DevSecOps Architect" />
+  <meta property="og:title" content="Karthick Raja Chinnathambi — DevOps Manager, Cloud, Security &amp; AI" />
   <meta property="og:description" content="Logging platforms, API gateways, FinOps, incident forensics, and research on the audit cost of AI safety guarantees." />
   <meta name="twitter:card" content="summary" />
   <meta name="theme-color" content="#050805" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23050805'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%237dff4f' stroke-width='4'/%3E%3Ctext x='32' y='40' font-family='monospace' font-size='20' font-weight='700' text-anchor='middle' fill='%237dff4f'%3EKR%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Cinzel:wght@500;600;700&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script>
     // Apply the saved skin before first paint
-    try { var s = localStorage.getItem('skin'); if (s === 'grimoire' || s === 'dial') document.documentElement.setAttribute('data-skin', s); } catch (e) {}
+    try { var s = localStorage.getItem('skin'); if (s === 'grimoire' || s === 'dial' || s === 'nightfall') document.documentElement.setAttribute('data-skin', s); } catch (e) {}
   </script>
   <script type="application/ld+json">
   {
@@ -44,7 +44,7 @@
 
   <nav class="nav" aria-label="Primary">
     <div class="nav-inner">
-      <a href="#top" class="brand">
+      <a href="index.html" class="brand">
         <span class="brand-mark" aria-hidden="true">KR</span>
         <span class="brand-name">karthickrajan<span class="dot">.</span>com</span>
       </a>
@@ -52,13 +52,13 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#ai">AI &amp; ML</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#more">Field notes</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html" class="is-active" aria-current="page">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="ai.html">AI &amp; ML</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="drone.html">Drone</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ul>
       <button id="skinToggle" class="skin-toggle" aria-label="Switch visual theme">
         <span class="skin-ico" aria-hidden="true"></span>
@@ -74,18 +74,11 @@
         <div class="hero-tag">DevOps Manager · Tonik Digital Bank · Chennai, India</div>
         <h1>Karthick Raja <span class="accent">Chinnathambi</span></h1>
         <p class="hero-role">Cloud <span class="sep">/</span> Platform Engineering <span class="sep">/</span> DevSecOps <span class="sep">/</span> AI &amp; ML <span class="sep">/</span> FinOps</p>
-        <p class="hero-summary">
-          I build and run the platforms a digital bank stands on: the logging pipeline, the API gateway,
-          the security toolchain, the delivery pipelines, and the ML pipelines, model serving and AI
-          agents that run on top of them. I spend the rest of my time finding
-          <strong>faults that are already present but have not failed yet</strong>, and proving them with
-          measurements. My M.Tech research in Artificial Intelligence asks the same question of AI systems:
-          what does a safety guarantee actually cost?
-        </p>
+        <p class="hero-summary">I build and run the platforms a digital bank stands on, and the <strong>ML services and AI agents</strong> on top of them. Security tester, drone builder, and researcher on what AI safety guarantees cost.</p>
         <div class="hero-cta">
-          <a href="#work" class="btn btn-primary">See the work</a>
-          <a href="#ai" class="btn btn-ghost">AI &amp; ML work</a>
-          <a href="#research" class="btn btn-ghost">Read the research</a>
+          <a href="work.html" class="btn btn-primary">See the work</a>
+          <a href="ai.html" class="btn btn-ghost">AI &amp; ML work</a>
+          <a href="research.html" class="btn btn-ghost">Read the research</a>
           <a href="#contact" class="btn btn-ghost">Contact</a>
         </div>
       </div>
@@ -116,357 +109,84 @@
 
   <main id="main">
 
-  <!-- ============================ FEATURED WORK ============================ -->
-  <section id="work" class="section">
+  <section id="highlights" class="section">
     <div class="container">
       <div class="section-head">
-        <span class="kicker" data-n="01" data-r="I">Selected work</span>
-        <h2>Platforms built, systems fixed, defences tested.</h2>
-        <p class="section-sub">Each one states the problem, what I did, and what was measured or designed. This is a public-safe summary: no internal names, hostnames or customer data, and the mechanisms are described without the incidents around them.</p>
+        <span class="kicker" data-n="01" data-r="I">Highlights</span>
+        <h2>Start here.</h2>
       </div>
-
-      <div class="cases">
-
-        <article class="case">
-          <header>
-            <span class="case-tag">Observability · 2026</span>
-            <h3>Building a self-hosted replacement for a managed log service on Grafana Loki</h3>
-          </header>
-          <div class="case-body">
-            <div>
-              <h4>Problem</h4>
-              <p>Log ingestion on a managed service was costly at our volume, and production alerting depended on the same service, so it could not simply be switched off.</p>
-            </div>
-            <div>
-              <h4>What I did</h4>
-              <ul>
-                <li>Designed and built Loki in Simple Scalable mode on ECS Fargate: object storage backend, replicated writes across zones, long-term retention on tiered object storage.</li>
-                <li>Dual-shipped every service through Fluent Bit sidecars so existing alarms kept firing while parity was proven.</li>
-                <li>Split the read path into frontend, scheduler, querier pool and index gateway, with a custom Lambda autoscaler driven by in-flight sub-queries.</li>
-                <li>Found the new pipeline silently dropping batches during the parallel run. The system of record was unaffected. Traced it to a saturated write tier, resized, and held zero drops.</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Measured</h4>
-              <ul class="metrics">
-                <li><b>8.43M vs 8.44M</b> lines in a 30-minute reconciliation across the fleet (−0.06%)</li>
-                <li><b>0</b> logs dropped and <b>52/52</b> alarms healthy on the 24-hour parity check</li>
-                <li><b>−80%</b> bytes on the wire after enabling gzip (5.1×)</li>
-                <li>Dropped batches in the new pipeline <b>→ 0</b> after the write-tier fix</li>
-              </ul>
-            </div>
-          </div>
-          <ul class="tech-tags"><li>Grafana Loki</li><li>LogQL</li><li>Fluent Bit / FireLens</li><li>ECS Fargate</li><li>S3</li><li>Lambda</li><li>Terraform</li><li>Grafana alerting</li></ul>
-        </article>
-
-        <article class="case">
-          <header>
-            <span class="case-tag">API gateway · 2026</span>
-            <h3>Moving an API gateway from Kubernetes to ECS, one environment at a time</h3>
-          </header>
-          <div class="case-body">
-            <div>
-              <h4>Problem</h4>
-              <p>The Kong gateway ran on Kubernetes behind a service mesh, with custom plugins that needed renaming. Kong refuses to boot if the database names a plugin the image does not load, so the image swap and the data change block each other.</p>
-            </div>
-            <div>
-              <h4>What I did</h4>
-              <ul>
-                <li>Built the image supply chain: upstream Kong mirrored internally, the custom Lua plugins baked in, deploys triggered by a tag move and pinned to a commit hash.</li>
-                <li>Solved the boot-ordering constraint with an in-place rename, a backup table and reverse SQL per environment, proven on dev, then test, then UAT.</li>
-                <li>Built production on ECS with a Multi-AZ PostgreSQL database and single sign-on for the admin UI, ran it in parallel, then cut public traffic over by DNS.</li>
-                <li>Added identity-provider authentication in front of the gateway's management plane, with separate trust for production.</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Measured</h4>
-              <ul class="metrics">
-                <li>Every environment cut over <b>one at a time</b>, production last</li>
-                <li><b>44/44</b> identical status codes in the UAT parity smoke test; 2–4&nbsp;ms on ECS against 8–16&nbsp;ms before</li>
-                <li>Routes, services and plugins carried across with counts <b>equal to the source</b> in every environment</li>
-                <li>Later hostname change on production done as a rolling deploy with both tasks healthy throughout</li>
-              </ul>
-            </div>
-          </div>
-          <p class="case-note">The plugins themselves were written by teammates. My part was the architecture, infrastructure, pipelines, migration and hardening.</p>
-          <ul class="tech-tags"><li>Kong OSS</li><li>Lua</li><li>ECS Fargate</li><li>RDS PostgreSQL</li><li>ALB OIDC</li><li>Entra ID</li><li>Cloudflare</li><li>CodePipeline</li></ul>
-        </article>
-
-        <article class="case">
-          <header>
-            <span class="case-tag">DevSecOps · ongoing</span>
-            <h3>A security scanning platform every repository can call</h3>
-          </header>
-          <div class="case-body">
-            <div>
-              <h4>Problem</h4>
-              <p>There was no central scanning and no single vulnerability backlog across the microservice repositories.</p>
-            </div>
-            <div>
-              <h4>What I did</h4>
-              <ul>
-                <li>Wrote reusable GitHub Actions workflows for secret scanning, static analysis and code quality, all importing into one vulnerability manager with de-duplication.</li>
-                <li>Added container image scanning in a shared build project, with scores pushed to dashboards.</li>
-                <li>Built ephemeral self-hosted CI runners on Fargate, scaled by a small Lambda on queue depth during working hours.</li>
-                <li>Wrote the whole platform as layered Terraform, with single sign-on on the main tools.</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Measured</h4>
-              <ul class="metrics">
-                <li><b>Every</b> service repository calls the same shared workflows</li>
-                <li><b>One</b> vulnerability backlog for all of them, in place of per-tool reports</li>
-                <li>One aggregate query: <b>7,764&nbsp;ms cold, 19&nbsp;ms warm</b> after resizing the database cache</li>
-                <li>The runner autoscaler runs for under <b>$0.05</b> a month</li>
-              </ul>
-            </div>
-          </div>
-          <ul class="tech-tags"><li>Gitleaks</li><li>Semgrep</li><li>SonarQube</li><li>Trivy</li><li>DefectDojo</li><li>GitHub Actions</li><li>Prometheus</li><li>Grafana</li><li>Terraform</li></ul>
-        </article>
-
-        <article class="case">
-          <header>
-            <span class="case-tag">FinOps · 2026</span>
-            <h3>Taking the cloud bill apart, and building an agent that keeps doing it</h3>
-          </header>
-          <div class="case-body">
-            <div>
-              <h4>Problem</h4>
-              <p>Spend was hard to attribute. Much of it carried no usable tag, and the obvious savings lists did not match what the bill would actually do.</p>
-            </div>
-            <div>
-              <h4>What I did</h4>
-              <ul>
-                <li>Decomposed the bill by service, cluster, environment and application from billing and usage data, and traced anomalies to their callers.</li>
-                <li>Produced a prioritised savings catalogue: log pipeline, right-sizing, off-hours scheduling, storage lifecycle, data transfer.</li>
-                <li>Ran a read-only audit with twelve specialist agents and three review stages. Of 225 recommendations, 22 were rejected and 30 were duplicates before anything reached a human.</li>
-                <li>Found a scheduled shutdown job that had been failing silently, and got it fixed. Tooling now switches off outside working hours.</li>
-                <li>Built a standing read-only cost agent with a knowledge base, a savings ledger and a second agent that attacks its numbers.</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Found</h4>
-              <ul class="metrics">
-                <li>Savings worth a <b>double-digit share</b> of the monthly bill identified</li>
-                <li>Most spend was <b>shared platform cost</b> that tags alone could not attribute</li>
-                <li>The provider's own recommendations covered <b>under 5%</b> of what could be optimised</li>
-                <li>Right-sizing that looked valuable at list price was worth <b>nothing after discounts</b>, because existing commitments already covered it</li>
-              </ul>
-            </div>
-          </div>
-          <p class="case-note">These are identified opportunities and implemented controls. I only publish a delivered saving once it has been re-measured on a later bill.</p>
-          <ul class="tech-tags"><li>Cost Explorer</li><li>Savings Plans / RIs</li><li>CloudTrail attribution</li><li>Tagging governance</li><li>EventBridge schedules</li><li>S3 lifecycle</li><li>AI agents</li></ul>
-        </article>
-
-        <article class="case">
-          <header>
-            <span class="case-tag">Database delivery · 2026</span>
-            <h3>Making database changes ordered, checked and reversible</h3>
-          </header>
-          <div class="case-body">
-            <div>
-              <h4>Problem</h4>
-              <p>Schema scripts for a dozen databases shared by many services were promoted by moving files between branches. There was no ledger of what had run where, so environments drifted.</p>
-            </div>
-            <div>
-              <h4>What I did</h4>
-              <ul>
-                <li>Designed one ordered changelog per database with Liquibase as the system of record, and a single promotion path: lint, validate, order check, snapshot, tag, run, verify.</li>
-                <li>Wrote pull-request lint rules, a head-of-queue guard for production, and a gate that stops an application deploying ahead of its schema.</li>
-                <li>Added a nightly drift report and a hash-verified plan, so what is approved is exactly what runs.</li>
-                <li>Worked through the rollback cases and wrote down the one that surprises people: a rollback does not un-ship a change, it puts the change back in the queue.</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Measured</h4>
-              <ul class="metrics">
-                <li><b>56 of 56</b> automated checks pass in the proof of concept</li>
-                <li><b>14</b> lint rules applied to every change before review</li>
-                <li>Drift designed to be detected within <b>24 hours</b></li>
-                <li>Runs on synthetic data in three local databases standing in for the environments</li>
-              </ul>
-            </div>
-          </div>
-          <p class="case-note">Status: architecture drafted for review and proof of concept complete. Not yet in production.</p>
-          <ul class="tech-tags"><li>Liquibase 4.33</li><li>MySQL 8.4</li><li>Docker</li><li>Bash</li><li>Pull-request linting</li><li>Drift detection</li><li>Rollback design</li></ul>
-        </article>
-
-        <article class="case">
-          <header>
-            <span class="case-tag">Mobile application security · 2026</span>
-            <h3>Mobile app security: testing client-side defences and designing server-side ones</h3>
-          </header>
-          <div class="case-body">
-            <div>
-              <h4>Scenario</h4>
-              <p>The standard threat model for any mobile banking app: the attacker controls the device. Checks that run on the phone raise the cost of an attack, but the server has to assume they can be bypassed.</p>
-            </div>
-            <div>
-              <h4>What I did</h4>
-              <ul>
-                <li>Reverse-engineered successive builds of a React Native app: decompiled the Java layer, analysed the native libraries, mapped the API surface and traced how pinning is wired.</li>
-                <li>Built an instrumented lab, a rooted emulator with a runtime instrumentation agent, to test how tamper, hook and root detection and certificate pinning hold up on a device the tester controls.</li>
-                <li>Reviewed the in-house security SDK from source and wrote hardening reviews for later builds.</li>
-                <li>Wrote the methodology guide so the team can repeat the assessment on every release.</li>
-              </ul>
-            </div>
-            <div>
-              <h4>What I proposed</h4>
-              <ul class="metrics">
-                <li><b>Dynamic pinning:</b> pins delivered as a signed, versioned, expiring bundle that the app verifies with a public key, so they rotate without an app release</li>
-                <li><b>No secrets in the binary:</b> asymmetric encryption to a server-held key, or a per-session key after the app proves itself</li>
-                <li><b>App attestation:</b> OS-backed proof of a genuine app exchanged for a short-lived token the gateway validates on every call</li>
-                <li><b>Device-bound tokens</b> and per-request signing</li>
-              </ul>
-            </div>
-          </div>
-          <p class="case-note">Status: design proposals drafted for review. Lab work on test builds with test accounts. Findings stay internal.</p>
-          <ul class="tech-tags"><li>jadx</li><li>apktool</li><li>Frida</li><li>Hermes / React Native</li><li>Rooted emulator</li><li>Play Integrity</li><li>App Attest</li><li>KMS</li><li>Gateway token validation</li></ul>
-        </article>
-
-        <article class="case">
-          <header>
-            <span class="case-tag">AI platform · 2026</span>
-            <h3>The infrastructure for a conversational banking assistant</h3>
-          </header>
-          <div class="case-body">
-            <div>
-              <h4>Problem</h4>
-              <p>A banking chat assistant needed a complete test environment: admin portal, services, retrieval, a self-hosted language model, WebSocket routing and delivery pipelines.</p>
-            </div>
-            <div>
-              <h4>What I did</h4>
-              <ul>
-                <li>Deployed the portal and services on Fargate Spot, with secrets moved out of the repositories.</li>
-                <li>Deployed the retrieval path: queue, container Lambda, embeddings service and PostgreSQL with pgvector.</li>
-                <li>Ran the model on a GPU node group behind an ECS capacity provider, and moved to on-demand when Spot capacity could not be had.</li>
-                <li>Added blue/green deployment with automatic rollback, and a private CDN for the web SDK.</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Measured</h4>
-              <ul class="metrics">
-                <li>Model answers from <b>~26&nbsp;s on CPU to about 1–3&nbsp;s</b> on GPU</li>
-                <li>FAQ answers in <b>0.1–0.3&nbsp;s</b>; a new FAQ answerable 3–4&nbsp;s after saving</li>
-                <li>The GPU <b>dominated</b> the stack's cost, which made its schedule the main cost lever</li>
-                <li>History store costed over five years: <b>$46 to $4,875</b> for the cheapest design, depending on volume</li>
-              </ul>
-            </div>
-          </div>
-          <ul class="tech-tags"><li>RAG</li><li>pgvector</li><li>Ollama</li><li>GPU on ECS</li><li>Redis Stack</li><li>SQS / Lambda</li><li>CodeDeploy blue/green</li><li>CloudFront</li><li>Elasticsearch</li></ul>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ AI & ML ============================ -->
-  <section id="ai" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker" data-n="02" data-r="II">AI &amp; ML engineering</span>
-        <h2>Models, pipelines and agents: what we have built and run.</h2>
-        <p class="section-sub">Each card says where it runs. The application logic of the assistant belongs to the AI engineering team; the platform under it is mine.</p>
-      </div>
-
-      <div class="ai-grid">
-
-        <article class="ai-card ai-wide">
-          <span class="note-tag">LLM serving · retrieval · test environment</span>
-          <h3>Retrieval-augmented assistant on self-hosted models</h3>
-          <p>The serving platform behind a banking chat assistant. The language model, the embeddings and the vector store are self-hosted, not called from an external model API.</p>
-          <dl class="spec">
-            <div><dt>answer path</dt><dd>staged: cheap matches first, and the language model only when they fail</dd></div>
-            <div><dt>embeddings</dt><dd>an open embedding model, 768 dimensions, served by a text-embeddings inference container</dd></div>
-            <div><dt>vector store</dt><dd>PostgreSQL with pgvector; session state in Redis Stack</dd></div>
-            <div><dt>generation</dt><dd>an open-weight 7B model, 4-bit quantised, on a T4 GPU behind an ECS capacity provider</dd></div>
-            <div><dt>ingest</dt><dd>admin portal &rarr; service &rarr; queue &rarr; container Lambda &rarr; embeddings &rarr; pgvector; new content is answerable 3&ndash;4 s after saving</dd></div>
-            <div><dt>tuning</dt><dd>match threshold set to 0.75 after measuring that unrelated questions score 0.45&ndash;0.60 cosine</dd></div>
-            <div><dt>latency</dt><dd>~26 s on CPU &rarr; about 1&ndash;3 s on GPU for generated answers; 0.1&ndash;0.3 s for matched answers</dd></div>
-          </dl>
-        </article>
-
-        <article class="ai-card">
-          <span class="note-tag">ML in production · vision and tabular</span>
-          <h3>Face verification, de-duplication and a segmentation model</h3>
-          <p>The machine-learning services behind customer onboarding and analytics, deployed and run across two clouds.</p>
-          <dl class="spec">
-            <div><dt>face match</dt><dd>Amazon Rekognition for face comparison and liveness in the onboarding flow</dd></div>
-            <div><dt>de-duplication</dt><dd>a face de-duplication service on GCP that checks a new applicant against existing customers</dd></div>
-            <div><dt>segmentation</dt><dd>BigQuery &rarr; feature engineering &rarr; K-Means clustering &rarr; reviewed labels &rarr; random-forest classifier for real-time inference</dd></div>
-            <div><dt>delivery</dt><dd>Cloud Build pipelines to Cloud Run on GCP; container services on AWS</dd></div>
-            <div><dt>my part</dt><dd>deployment, pipelines, networking and operations. The models themselves are not my work</dd></div>
-          </dl>
-        </article>
-
-        <article class="ai-card">
-          <span class="note-tag">Agents · operations · hackathon</span>
-          <h3>Multi-agent incident investigator</h3>
-          <p>Built with two teammates. An incident goes in, a root-cause report comes out.</p>
-          <dl class="spec">
-            <div><dt>graph</dt><dd>LangGraph supervisor routing to log, APM, database and scheduler agents, then a root-cause agent</dd></div>
-            <div><dt>tools</dt><dd>Loki and Prometheus query tools; a Redis event log feeding a live status dashboard</dd></div>
-            <div><dt>models</dt><dd>an open-weight 8B model on Ollama, with one model file (prompt and parameters) per agent role</dd></div>
-            <div><dt>runtime</dt><dd>FastAPI service; local stack with tracing, metrics and logs</dd></div>
-          </dl>
-        </article>
-
-        <article class="ai-card">
-          <span class="note-tag">Agents · FinOps · internal tooling</span>
-          <h3>Agent teams that audit a cloud bill</h3>
-          <p>Agents that collect, analyse and then argue with each other before a human sees a number.</p>
-          <dl class="spec">
-            <div><dt>audit</dt><dd>12 specialist agents and three review stages over one account</dd></div>
-            <div><dt>filtering</dt><dd>225 recommendations in; 22 rejected and 30 removed as duplicates by the review stages</dd></div>
-            <div><dt>standing agent</dt><dd>knowledge base, shell toolkit, savings ledger, over 20 documented failure patterns</dd></div>
-            <div><dt>safety</dt><dd>read-only by rule and allowlist; the audit was checked afterwards against every script it ran and the cloud audit trail, with no changes found</dd></div>
-          </dl>
-        </article>
-
-        <article class="ai-card">
-          <span class="note-tag">Agents · verification · internal tooling</span>
-          <h3>An adversarial reviewer for AI output</h3>
-          <p>A second agent whose only job is to break the first agent's conclusion.</p>
-          <dl class="spec">
-            <div><dt>labels</dt><dd>every claim marked tested, cited or asserted</dd></div>
-            <div><dt>memory</dt><dd>persistent record of verified facts, open claims and past mistakes</dd></div>
-            <div><dt>effect</dt><dd>overturned four headline figures in the cost agent's first baseline before anyone relied on it</dd></div>
-          </dl>
-        </article>
-
-        <article class="ai-card">
-          <span class="note-tag">LLM observability</span>
-          <h3>Telemetry for AI coding assistants</h3>
-          <p>Usage and spend for engineering AI tools, in the same stack as everything else.</p>
-          <dl class="spec">
-            <div><dt>pipeline</dt><dd>OpenTelemetry Collector &rarr; Prometheus and Loki</dd></div>
-            <div><dt>cost</dt><dd>daily sync of token usage and spend to dashboards</dd></div>
-            <div><dt>enablement</dt><dd>playbooks for shared context and token-cost reuse across an engineering organisation</dd></div>
-          </dl>
-        </article>
-
-        <article class="ai-card">
-          <span class="note-tag">Research · AI safety</span>
-          <h3>What a guarantee on an LLM triager costs</h3>
-          <p>My M.Tech project and IEEE submission: the audit budget needed to certify how often a model wrongly closes a real security alert.</p>
-          <dl class="spec">
-            <div><dt>methods</dt><dd>risk control, confidence sequences, inverse-propensity weighting, sequential tests</dd></div>
-            <div><dt>result</dt><dd>24 audited misses for one exact certificate; a public benchmark supplies 2.4</dd></div>
-          </dl>
-          <a class="ai-link" href="#research">Read the research &rarr;</a>
-        </article>
-
+      <div class="notes-grid">
+        <a class="note tile" href="research.html#publications">
+          <span class="note-tag">IEEE · submitted Nov 2026</span>
+          <h3>The Price of a Safety Guarantee</h3>
+          <p>Short paper submitted to IEEE Transactions on Dependable and Secure Computing.</p>
+          <span class="tile-go">Open &rarr;</span>
+        </a>
+        <a class="note tile" href="security.html#mobile">
+          <span class="note-tag">Mobile security</span>
+          <h3>Mobile app reverse engineering</h3>
+          <p>APK decompilation, runtime instrumentation, pinning and root-detection testing, dynamic pinning design.</p>
+          <span class="tile-go">Open &rarr;</span>
+        </a>
+        <a class="note tile" href="drone.html">
+          <span class="note-tag">Drone engineering</span>
+          <h3>Built and flew a quadcopter</h3>
+          <p>100+ flight hours. Tuned for heavy wind and signal disturbance.</p>
+          <span class="tile-go">Open &rarr;</span>
+        </a>
+        <a class="note tile" href="ai.html">
+          <span class="note-tag">AI &amp; ML</span>
+          <h3>Models, pipelines and agents</h3>
+          <p>Self-hosted RAG assistant on GPU, multi-agent systems, face verification services.</p>
+          <span class="tile-go">Open &rarr;</span>
+        </a>
+        <a class="note tile" href="work.html#logging">
+          <span class="note-tag">Observability</span>
+          <h3>Self-hosted logging platform</h3>
+          <p>Grafana Loki replacing a managed log service, with measured parity.</p>
+          <span class="tile-go">Open &rarr;</span>
+        </a>
+        <a class="note tile" href="work.html#gateway">
+          <span class="note-tag">API gateway</span>
+          <h3>Gateway migration to ECS</h3>
+          <p>Kong moved off Kubernetes, one environment at a time.</p>
+          <span class="tile-go">Open &rarr;</span>
+        </a>
+        <a class="note tile" href="security.html#devsecops">
+          <span class="note-tag">DevSecOps</span>
+          <h3>Security scanning platform</h3>
+          <p>One set of pipelines and one vulnerability backlog for every repository.</p>
+          <span class="tile-go">Open &rarr;</span>
+        </a>
+        <a class="note tile" href="work.html#finops">
+          <span class="note-tag">FinOps</span>
+          <h3>Cloud bill audit and cost agents</h3>
+          <p>Bill decomposition and agent teams that check each other.</p>
+          <span class="tile-go">Open &rarr;</span>
+        </a>
+        <a class="note tile" href="research.html#timebombs">
+          <span class="note-tag">Research pilot</span>
+          <h3>Infrastructure time bombs</h3>
+          <p>Eight types of fault that are already present and have not failed yet.</p>
+          <span class="tile-go">Open &rarr;</span>
+        </a>
+        <a class="note tile" href="research.html#next">
+          <span class="note-tag">Next</span>
+          <h3>Quantum computing</h3>
+          <p>Mathematics first, then doctoral research.</p>
+          <span class="tile-go">Open &rarr;</span>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ============================ SKILLS ============================ -->
-  <section id="skills" class="section">
+  <section id="skills" class="section section-alt">
     <div class="container">
       <div class="section-head">
-        <span class="kicker" data-n="03" data-r="III">Skills</span>
+        <span class="kicker" data-n="02" data-r="II">Skills</span>
         <h2>What I work with, by area.</h2>
-        <p class="section-sub">Turn the selector to switch area. Each area says what I use it for; the work it comes from is above.</p>
+        <p class="section-sub">Turn the selector to switch area.</p>
       </div>
 
       <div class="skills-wrap" id="skillsWrap">
@@ -548,247 +268,11 @@
     </div>
   </section>
 
-  <!-- ============================ FIELD NOTES ============================ -->
-  <section id="more" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker" data-n="04" data-r="IV">Field notes</span>
-        <h2>Root causes, designs and smaller builds.</h2>
-        <p class="section-sub">Shorter entries. Filter by the kind of work.</p>
-      </div>
-
-      <div class="filters" role="group" aria-label="Filter field notes">
-        <button class="filter is-on" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter" data-filter="rca" aria-pressed="false">Root cause</button>
-        <button class="filter" data-filter="platform" aria-pressed="false">Platform</button>
-        <button class="filter" data-filter="security" aria-pressed="false">Security</button>
-        <button class="filter" data-filter="design" aria-pressed="false">Design</button>
-      </div>
-
-      <div class="notes-grid" id="notes">
-
-        <article class="note" data-cat="rca">
-          <span class="note-tag">Root cause</span>
-          <h3>A service advertised before it was listening</h3>
-          <p>Service discovery can publish a new task address before the process accepts connections when the task has no container health check. A second fault class sits next to it: a restart loop caused by two health checks whose timings are seconds apart. Proved both mechanisms and wrote an ordered fix.</p>
-        </article>
-
-        <article class="note" data-cat="rca">
-          <span class="note-tag">Root cause</span>
-          <h3>A database password that rotated itself</h3>
-          <p>A managed secret rotates on a schedule. Containers read secrets only at launch, so a running task keeps the old password and loses its database when rotation fires. Documented the event-driven design that makes rotation safe: rotation succeeded, then redeploy.</p>
-        </article>
-
-        <article class="note" data-cat="rca">
-          <span class="note-tag">Root cause</span>
-          <h3>Gateway timeouts that were not the load balancer's fault</h3>
-          <p>A burst of 504s was blamed on scale-down. Real deregistration events produced zero errors, which ruled that out as a negative control. The cause was a database stall cascading through connection pools. A separate measurement showed a planned database upgrade was unnecessary.</p>
-        </article>
-
-        <article class="note" data-cat="rca">
-          <span class="note-tag">Root cause</span>
-          <h3>A function that timed out without telling anyone</h3>
-          <p>A small-memory function can time out on large files without raising an alarm. The same code ran in 2.19 seconds locally and over 60 on the platform. Memory was the CPU throttle. Resized it, and the backlog cleared.</p>
-        </article>
-
-        <article class="note" data-cat="rca">
-          <span class="note-tag">Root cause</span>
-          <h3>Why a slow batch job would not speed up with more CPU</h3>
-          <p>The job was strictly serial with two synchronous calls per record, about three seconds each, so it was bound by latency and not compute. The useful fix was a claim step so each record is processed exactly once, not a bigger task.</p>
-        </article>
-
-        <article class="note" data-cat="rca">
-          <span class="note-tag">Root cause</span>
-          <h3>"Rename failed: access denied" on file uploads</h3>
-          <p>The managed file-transfer service implements rename as copy then delete, and the role only allowed delete on a fixed list of prefixes. Only files over 100 KB were affected, because that is where the client starts using temporary names. Traced through audit events to a one-line policy fix.</p>
-        </article>
-
-        <article class="note" data-cat="rca">
-          <span class="note-tag">Root cause</span>
-          <h3>CI jobs queueing for a day, then being cancelled</h3>
-          <p>Self-hosted runners updated themselves when a job was assigned and the one-shot container exited. Pinned the version, rebuilt the image and set a monthly rebuild so the platform keeps dispatching work.</p>
-        </article>
-
-        <article class="note" data-cat="rca">
-          <span class="note-tag">Root cause</span>
-          <h3>Deleting an API route did not disable the endpoint</h3>
-          <p>A broader prefix route still matched and forwarded the full path. I read the router source to compute the actual priority, showed that "longest prefix wins" is false, and built two read-only checks that tell a matched route from a missing one by status code alone.</p>
-        </article>
-
-        <article class="note" data-cat="rca">
-          <span class="note-tag">Root cause</span>
-          <h3>A capacity debate about the wrong variable</h3>
-          <p>A cache discussion was framed as an engine upgrade. Measuring key expiry and weekly memory peaks showed the real constraint was growth from keys that never expire, which no eviction policy can relieve, and that compute was never the limit.</p>
-        </article>
-
-        <article class="note" data-cat="platform">
-          <span class="note-tag">Platform</span>
-          <h3>Infrastructure-as-code redesign</h3>
-          <p>Blueprint and reference build for a two-repository Terraform model: versioned modules, plus one YAML file per service. Covers five compute types and a disaster-recovery region built first. The design target is a new service from one file in minutes.</p>
-        </article>
-
-        <article class="note" data-cat="platform">
-          <span class="note-tag">Platform</span>
-          <h3>A backend that migrates its own schema on boot</h3>
-          <p>Self-migrating services crash-loop when a deploy branch falls behind the database, and a rollback to an older image fails the same way. The fix is structural: reconcile the branch, add a container health check and a deployment circuit breaker with rollback, and scan for secrets before commit.</p>
-        </article>
-
-        <article class="note" data-cat="platform">
-          <span class="note-tag">Platform</span>
-          <h3>Internal build and release portal</h3>
-          <p>Platform side of a release-governance dashboard built with a teammate: the shared build project, image scan fan-out to the vulnerability backlog and dashboards, hosting and pipelines. It enforces build once, promote everywhere.</p>
-        </article>
-
-        <article class="note" data-cat="platform">
-          <span class="note-tag">Platform</span>
-          <h3>Webhook ingestion on Google Cloud</h3>
-          <p>A Cloud Run service receiving marketing-platform webhooks and publishing to two Pub/Sub topics feeding BigQuery, behind a global load balancer with an allow-list. I did the authentication hardening, security-test remediation, branch-based builds, load tests and cost model.</p>
-        </article>
-
-        <article class="note" data-cat="platform">
-          <span class="note-tag">Platform</span>
-          <h3>Sprint capacity reporting for the DevOps team</h3>
-          <p>Built an automated capacity report for the team I manage, generated from the issue tracker: per-person load, epic roll-up and totals that reconcile, with a note on every number that should not be quoted out of context.</p>
-        </article>
-
-        <article class="note" data-cat="security">
-          <span class="note-tag">Security</span>
-          <h3>Single sign-on at the load balancer</h3>
-          <p>Put identity-provider sign-in in front of a back-office app with no application change, and verified that blue/green deployments keep the authentication action when traffic weights swap.</p>
-        </article>
-
-        <article class="note" data-cat="security">
-          <span class="note-tag">Security</span>
-          <h3>Security review of an internal tool</h3>
-          <p>Authorised code review and live testing of an internal tool, delivered with a sprint-based remediation plan.</p>
-        </article>
-
-        <article class="note" data-cat="design">
-          <span class="note-tag">Design</span>
-          <h3>Six ways to schedule a one-off callback</h3>
-          <p>Compared six architectures at 10,000 callbacks a day. A managed scheduler came to $1.64 a month. A workflow engine doing the same job came to $39.77, twenty-four times more.</p>
-        </article>
-
-        <article class="note" data-cat="design">
-          <span class="note-tag">Design</span>
-          <h3>Where to keep chatbot conversation history</h3>
-          <p>Measured real document sizes, then costed five designs over five years at three volumes. A key-value store with expiry plus object storage won at every volume. Query-in-place on object storage looked cheap and was the most expensive by far.</p>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ RESEARCH ============================ -->
-  <section id="research" class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker" data-n="05" data-r="V">Research</span>
-        <h2>M.Tech in Artificial Intelligence: what does a safety guarantee cost?</h2>
-        <p class="section-sub">SRM Institute of Science and Technology, Kattankulathur. Final project submitted November 2026.</p>
-      </div>
-
-      <div class="pub" id="publications">
-        <h3>Publications</h3>
-        <p class="pub-cite">
-          K. R. Chinnathambi, &ldquo;The Price of a Safety Guarantee: The Audit Cost of Miss-Rate Certificates
-          in LLM Triage of Security Alerts,&rdquo; short paper,
-          <em>IEEE Transactions on Dependable and Secure Computing</em>.
-        </p>
-        <p class="pub-status"><span class="pub-badge">Submitted · Nov 2026</span> Under review. Not yet accepted or published.</p>
-      </div>
-
-      <article class="paper">
-        <div class="paper-head">
-          <span class="case-tag">Final project · paper submitted to IEEE Transactions on Dependable and Secure Computing (short paper), Nov 2026</span>
-          <h3>The Price of a Safety Guarantee: The Audit Cost of Miss-Rate Certificates in LLM Triage of Security Alerts</h3>
-        </div>
-        <div class="paper-body">
-          <div class="paper-text">
-            <p>
-              When a model triages security alerts, most are closed and never looked at again, so nobody can see
-              how many real vulnerabilities were closed by mistake. The accepted remedy is to audit a random sample
-              of closures and publish a certified miss rate. This project asks a question that had not been
-              computed for this setting: <strong>how much evidence does that certificate need?</strong>
-            </p>
-            <p>
-              The answer is a fixed number of <em>audited misses</em>. For a fixed relative precision and confidence, it
-              does not depend on the miss budget, the audit rate or the length of the alert stream. On a public benchmark the whole corpus cannot
-              supply it. A cheaper question, "is the miss rate over budget?", needs about 2.5 times less, although the
-              benchmark is still short of that at a 3% audit rate. The practical reading: a one-off check of a
-              triage system is within reach, keeping it continuously certified is not.
-            </p>
-            <p class="paper-limits">
-              <strong>Stated limits.</strong> The formulas are classical. The contribution is the audit-cost
-              analysis for alert triage and a reproducible instrument. Experiments use a logistic-regression
-              scorer; the language-model tier is a small pilot. The guarantee covers raised alerts only: the
-              scanner never flags 11.8% of the real vulnerabilities in the benchmark.
-            </p>
-          </div>
-          <ul class="paper-metrics">
-            <li><b>24</b><span>audited misses needed for one exact certificate</span></li>
-            <li><b>55–77</b><span>needed if the certificate must hold at every moment</span></li>
-            <li><b>2.4</b><span>available from the whole benchmark at a 3% audit rate</span></li>
-            <li><b>10×</b><span>shortfall between what is needed and what exists</span></li>
-            <li><b>9.8</b><span>audited misses to detect a miss rate at twice the budget</span></li>
-            <li><b>89.2%</b><span>miss rate a naive self-training triager drifts to</span></li>
-          </ul>
-        </div>
-        <ul class="tech-tags"><li>Statistical risk control</li><li>Confidence sequences</li><li>Inverse-propensity weighting</li><li>Monte Carlo</li><li>Semgrep</li><li>OWASP Benchmark v1.2 (2,740 cases)</li><li>Python</li></ul>
-      </article>
-
-      <article class="paper bomb">
-        <div class="paper-head">
-          <span class="case-tag">Research pilot · paused until after submission</span>
-          <h3>Infrastructure time bombs: faults that are already there and have not failed yet</h3>
-        </div>
-        <p class="bomb-def">
-          A time bomb is a fault that is already present in a working system and will become a failure at a
-          later time <em>without any new mistake by anyone</em>. Each has three parts: a clock, a hidden
-          coupling, and a trigger moment. The taxonomy comes from incidents I have worked on.
-        </p>
-        <ol class="bomb-grid">
-          <li><span class="bomb-id">T1</span><b>Stale copy after rotation</b><span>A credential rotates; something still holds the old one.</span></li>
-          <li><span class="bomb-id">T2</span><b>Hard expiry not renewed</b><span>A certificate, token or version reaches its end date.</span></li>
-          <li><span class="bomb-id">T3</span><b>Cleanup of a referenced object</b><span>A lifecycle rule deletes something still in use.</span></li>
-          <li><span class="bomb-id">T4</span><b>Growth to a hard limit</b><span>Memory, disk or a quota fills at a steady rate.</span></li>
-          <li><span class="bomb-id">T5</span><b>Third-party end of life</b><span>A dependency's support window closes.</span></li>
-          <li><span class="bomb-id">T6</span><b>Thin timing margin</b><span>Two timeouts a few seconds apart, until they are not.</span></li>
-          <li><span class="bomb-id">T7</span><b>Retention-window loss</b><span>State expires while its consumer is away.</span></li>
-          <li><span class="bomb-id">T8</span><b>Silent stop</b><span>Something stops working and reports nothing.</span></li>
-        </ol>
-        <div class="bomb-pilot">
-          <h4>Pilot on public data</h4>
-          <ul class="metrics">
-            <li><b>25</b> searches over public issue trackers to size each type</li>
-            <li><b>400</b> issues sampled and double-labelled for two types (agreement κ&nbsp;=&nbsp;0.89 and 0.91)</li>
-            <li><b>31 of 200</b> rotation issues and <b>11 of 200</b> cleanup issues were real time bombs</li>
-            <li>Only <b>4 of 31</b> rotation cases could be detected from configuration alone</li>
-            <li>Scheduled rotation caused <b>4 of 31</b>; manual rotation and tool side effects caused about half</li>
-          </ul>
-          <p class="paper-limits"><strong>Stated limits.</strong> Both raters were the same language model working from a written codebook, which inflates agreement, and they saw the first 700 characters of each issue. Counts are small and keyword-sampled. A human check is still required before any claim is made from this.</p>
-        </div>
-      </article>
-
-      <div class="ideas">
-        <h3>How the topic was chosen</h3>
-        <p>
-          I started with a crop-prediction and farmer-advisory system and dropped it after an honest review:
-          the data could not be obtained and the scope was too large. I then scored the alternatives and,
-          later, examined eighteen more ideas against the literature. None gave a stronger defensible topic
-          than the alert-triage work. The gaps the search left open: operational time bombs, choosing
-          which countries' data to learn from when predicting crop yield somewhere new, and how far ahead
-          different classes of failure can be predicted at all.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- ============================ EXPERIENCE ============================ -->
-  <section id="experience" class="section section-alt">
+  <section id="experience" class="section">
     <div class="container">
       <div class="section-head">
-        <span class="kicker" data-n="06" data-r="VI">Experience</span>
+        <span class="kicker" data-n="03" data-r="III">Experience</span>
         <h2>Where the work was done.</h2>
       </div>
       <div class="timeline">
@@ -869,84 +353,15 @@
     </div>
   </section>
 
-  <!-- ============================ HOW I WORK ============================ -->
-  <section id="method" class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker" data-n="07" data-r="VII">Method</span>
-        <h2>How I work.</h2>
-      </div>
-      <div class="method-grid">
-        <div class="method">
-          <h3>Tested, cited or asserted</h3>
-          <p>Every claim in a report carries one of three labels. If I ran it, it is tested. If a document says so, it is cited. Anything else is an assertion and is marked as one.</p>
-        </div>
-        <div class="method">
-          <h3>Attack the conclusion first</h3>
-          <p>Before a recommendation leaves my desk, a second reviewer tries to break it. Several of my own headline numbers have been overturned that way, which is the point.</p>
-        </div>
-        <div class="method">
-          <h3>Rule things out in writing</h3>
-          <p>A root cause is only credible next to the list of causes that were eliminated and how. A negative control beats a plausible story.</p>
-        </div>
-        <div class="method">
-          <h3>Correct in public</h3>
-          <p>When a later measurement contradicts an earlier one, the report is revised with the correction shown. A withdrawn claim stays withdrawn.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ NOW ============================ -->
-  <section id="now" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker" data-n="08" data-r="VIII">Now and next</span>
-        <h2>What I am working toward.</h2>
-        <p class="section-sub">Early or unfinished, and labelled that way. Listed so the direction is clear.</p>
-      </div>
-      <div class="now-grid">
-        <article class="now-card">
-          <span class="now-state">Started</span>
-          <h3>Quantum computing, from the mathematics up</h3>
-          <p>I am building the foundations properly before touching a framework. I set up an eleven-stage curriculum that runs from number foundations through linear algebra, probability and information theory to Hilbert spaces, tensor products, qubits, gates and measurement, with an agent-taught course, one idea per lesson. I am at the start: the first lessons are arithmetic foundations.</p>
-          <ul class="pill-list"><li>Number foundations (current)</li><li>Linear algebra (planned)</li><li>Quantum mathematics (planned)</li><li>Qiskit / Cirq / PennyLane (planned)</li></ul>
-        </article>
-        <article class="now-card">
-          <span class="now-state">Direction</span>
-          <h3>Doctoral research in quantum computing</h3>
-          <p>The M.Tech closes in 2026. The next step I am preparing for is doctoral research in quantum computing, with quantum algorithms and quantum machine learning as the areas of interest.</p>
-          <ul class="pill-list"><li>Quantum algorithms</li><li>Quantum machine learning</li></ul>
-        </article>
-        <article class="now-card">
-          <span class="now-state">Design study</span>
-          <h3>Private language-model platforms</h3>
-          <p>Studying how an organisation could run its own models: retrieval with a knowledge graph, a shared answer memory so a question is solved once, and the trade-off between owned hardware and cloud for privacy and cost.</p>
-          <ul class="pill-list"><li>RAG + knowledge graph</li><li>Model serving</li><li>Fine-tuning and evaluation (planned)</li><li>Agentic operations</li></ul>
-        </article>
-        <article class="now-card">
-          <span class="now-state">Paused, resuming</span>
-          <h3>The infrastructure time-bomb study</h3>
-          <p>Extending the pilot into a proper empirical study: human validation of the labels, a lab that produces both failures and survivals, and a predictor for faults with a known clock.</p>
-          <ul class="pill-list"><li>Failure taxonomy</li><li>Labelled dataset</li><li>Lab reproduction</li></ul>
-          <a class="ai-link" href="#research">See the pilot &rarr;</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- ============================ CONTACT ============================ -->
-  <section id="contact" class="section">
+  <section id="contact" class="section section-alt">
     <div class="container">
       <div class="section-head">
-        <span class="kicker" data-n="09" data-r="IX">Contact</span>
+        <span class="kicker" data-n="04" data-r="IV">Contact</span>
         <h2>Get in touch.</h2>
       </div>
       <div class="contact-card">
-        <p class="contact-lead">
-          Open to conversations about platform engineering, DevSecOps and cloud cost work, and to
-          collaborating on the time-bomb research. Email is the fastest way to reach me.
-        </p>
+        <p class="contact-lead">Email is the fastest way to reach me.</p>
         <div class="contact-rows">
           <a class="contact-row" href="mailto:karthickraja@rocketmail.com">
             <span class="contact-label">Email</span>
@@ -970,7 +385,11 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div>&copy; <span id="year">2026</span> Karthick Raja Chinnathambi</div>
-      <div class="footer-meta">Views are my own, not my employer's · Plain HTML, CSS and JavaScript, no framework · No analytics, no cookies</div>
+      <div class="footer-meta footer-quotes">
+        <span class="fq" data-for="dial">&ldquo;It&rsquo;s hero time!&rdquo; <cite>Ben 10</cite></span>
+        <span class="fq" data-for="grimoire">&ldquo;Surpass your limits. Right here, right now.&rdquo; <cite>Yami Sukehiro, Black Clover</cite></span>
+        <span class="fq" data-for="nightfall">&ldquo;Arise.&rdquo; <cite>Sung Jinwoo, Solo Leveling</cite></span>
+      </div>
     </div>
   </footer>
 

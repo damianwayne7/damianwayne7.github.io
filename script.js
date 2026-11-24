@@ -4,22 +4,26 @@
   var root = document.documentElement;
 
   // ---------- Skin switch (persisted per browser) ----------
-  var SKINS = { dial: 'Xeno-Dial', grimoire: 'Grimoire' };
+  var SKINS = { dial: 'Xeno-Dial', grimoire: 'Grimoire', nightfall: 'Nightfall' };
+  var ORDER = ['dial', 'grimoire', 'nightfall'];
+  var THEME = { dial: '#050805', grimoire: '#0c090d', nightfall: '#04050c' };
   var skinToggle = document.getElementById('skinToggle');
   var skinLabel = document.getElementById('skinLabel');
   var themeMeta = document.querySelector('meta[name="theme-color"]');
 
   function applySkin(skin) {
+    if (!SKINS[skin]) skin = 'dial';
     root.setAttribute('data-skin', skin);
     if (skinLabel) skinLabel.textContent = SKINS[skin];
-    if (themeMeta) themeMeta.setAttribute('content', skin === 'grimoire' ? '#0c090d' : '#050805');
+    if (themeMeta) themeMeta.setAttribute('content', THEME[skin]);
     if (skinToggle) skinToggle.setAttribute('aria-label', 'Theme: ' + SKINS[skin] + '. Switch theme');
   }
-  applySkin(root.getAttribute('data-skin') === 'grimoire' ? 'grimoire' : 'dial');
+  applySkin(root.getAttribute('data-skin'));
 
   if (skinToggle) {
     skinToggle.addEventListener('click', function () {
-      var next = root.getAttribute('data-skin') === 'grimoire' ? 'dial' : 'grimoire';
+      var i = ORDER.indexOf(root.getAttribute('data-skin'));
+      var next = ORDER[(i + 1) % ORDER.length];
       applySkin(next);
       try { localStorage.setItem('skin', next); } catch (e) { /* storage unavailable */ }
     });
@@ -112,7 +116,7 @@
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce) {
-    var targets = document.querySelectorAll('.section-head, .case, .ai-card, .now-card, .readout, .note, .paper, .ideas, .tl-item, .cred-col, .method, .contact-card, .skills-wrap');
+    var targets = document.querySelectorAll('.section-head, .case, .brief, .ai-card, .now-card, .readout, .note, .paper, .ideas, .tl-item, .cred-col, .method, .contact-card, .skills-wrap');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
@@ -120,14 +124,4 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
     Array.prototype.forEach.call(targets, function (el) { el.classList.add('reveal'); io.observe(el); });
   }
-
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
-  var navObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      var id = '#' + entry.target.id;
-      navLinks.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === id); });
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  Array.prototype.forEach.call(document.querySelectorAll('main section[id]'), function (s) { navObserver.observe(s); });
 })();

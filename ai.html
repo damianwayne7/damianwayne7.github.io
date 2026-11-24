@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="dial">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI &amp; ML — Karthick Raja Chinnathambi</title>
+  <meta name="description" content="Self-hosted RAG assistant, face verification services, multi-agent systems and LLM telemetry." />
+  <meta name="author" content="Karthick Raja Chinnathambi" />
+  <link rel="canonical" href="https://karthickrajan.com/ai.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://karthickrajan.com/ai.html" />
+  <meta property="og:title" content="AI &amp; ML — Karthick Raja Chinnathambi" />
+  <meta property="og:description" content="Logging platforms, API gateways, FinOps, incident forensics, and research on the audit cost of AI safety guarantees." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#050805" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23050805'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%237dff4f' stroke-width='4'/%3E%3Ctext x='32' y='40' font-family='monospace' font-size='20' font-weight='700' text-anchor='middle' fill='%237dff4f'%3EKR%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Cinzel:wght@500;600;700&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Apply the saved skin before first paint
+    try { var s = localStorage.getItem('skin'); if (s === 'grimoire' || s === 'dial' || s === 'nightfall') document.documentElement.setAttribute('data-skin', s); } catch (e) {}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Karthick Raja Chinnathambi",
+    "url": "https://karthickrajan.com/",
+    "jobTitle": "DevOps Manager & Solution Architect — Cloud, Platform Engineering & DevSecOps",
+    "worksFor": { "@type": "Organization", "name": "Tonik Digital Bank" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "SRM Institute of Science and Technology" },
+      { "@type": "CollegeOrUniversity", "name": "Anna University" }
+    ],
+    "knowsAbout": ["AWS", "Google Cloud", "Kong API Gateway", "Grafana Loki", "DevSecOps", "FinOps", "Terraform", "Incident forensics", "Statistical risk control"],
+    "sameAs": ["https://www.linkedin.com/in/karthickraja", "https://github.com/damianwayne7"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">KR</span>
+        <span class="brand-name">karthickrajan<span class="dot">.</span>com</span>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="ai.html" class="is-active" aria-current="page">AI &amp; ML</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="drone.html">Drone</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button id="skinToggle" class="skin-toggle" aria-label="Switch visual theme">
+        <span class="skin-ico" aria-hidden="true"></span>
+        <span class="skin-label" id="skinLabel">Xeno-Dial</span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <!-- ============================ AI & ML ============================ -->
+  <section id="ai" class="section page-first">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-n="01" data-r="I">AI &amp; ML engineering</span>
+        <h2>Models, pipelines and agents: what we have built and run.</h2>
+        <p class="section-sub">Each card says where it runs.</p>
+      </div>
+
+      <div class="ai-grid">
+
+        <article class="ai-card ai-wide">
+          <span class="note-tag">LLM serving · retrieval · test environment</span>
+          <h3>Retrieval-augmented assistant on self-hosted models</h3>
+          <p>The serving platform behind a banking chat assistant. The language model, the embeddings and the vector store are self-hosted, not called from an external model API.</p>
+          <dl class="spec">
+            <div><dt>answer path</dt><dd>staged: cheap matches first, and the language model only when they fail</dd></div>
+            <div><dt>embeddings</dt><dd>an open embedding model, 768 dimensions, served by a text-embeddings inference container</dd></div>
+            <div><dt>vector store</dt><dd>PostgreSQL with pgvector; session state in Redis Stack</dd></div>
+            <div><dt>generation</dt><dd>an open-weight 7B model, 4-bit quantised, on a T4 GPU behind an ECS capacity provider</dd></div>
+            <div><dt>ingest</dt><dd>admin portal &rarr; service &rarr; queue &rarr; container Lambda &rarr; embeddings &rarr; pgvector; new content is answerable 3&ndash;4 s after saving</dd></div>
+            <div><dt>tuning</dt><dd>match threshold set to 0.75 after measuring that unrelated questions score 0.45&ndash;0.60 cosine</dd></div>
+            <div><dt>latency</dt><dd>~26 s on CPU &rarr; about 1&ndash;3 s on GPU for generated answers; 0.1&ndash;0.3 s for matched answers</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">ML in production · vision and tabular</span>
+          <h3>Face verification, de-duplication and a segmentation model</h3>
+          <p>The machine-learning services behind customer onboarding and analytics, deployed and run across two clouds.</p>
+          <dl class="spec">
+            <div><dt>face match</dt><dd>Amazon Rekognition for face comparison and liveness in the onboarding flow</dd></div>
+            <div><dt>de-duplication</dt><dd>a face de-duplication service on GCP that checks a new applicant against existing customers</dd></div>
+            <div><dt>segmentation</dt><dd>BigQuery &rarr; feature engineering &rarr; K-Means clustering &rarr; reviewed labels &rarr; random-forest classifier for real-time inference</dd></div>
+            <div><dt>delivery</dt><dd>Cloud Build pipelines to Cloud Run on GCP; container services on AWS</dd></div>
+            <div><dt>my part</dt><dd>deployment, pipelines, networking and operations. The models themselves are not my work</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">Agents · operations · hackathon</span>
+          <h3>Multi-agent incident investigator</h3>
+          <p>Built with two teammates. An incident goes in, a root-cause report comes out.</p>
+          <dl class="spec">
+            <div><dt>graph</dt><dd>LangGraph supervisor routing to log, APM, database and scheduler agents, then a root-cause agent</dd></div>
+            <div><dt>tools</dt><dd>Loki and Prometheus query tools; a Redis event log feeding a live status dashboard</dd></div>
+            <div><dt>models</dt><dd>an open-weight 8B model on Ollama, with one model file (prompt and parameters) per agent role</dd></div>
+            <div><dt>runtime</dt><dd>FastAPI service; local stack with tracing, metrics and logs</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">Agents · FinOps · internal tooling</span>
+          <h3>Agent teams that audit a cloud bill</h3>
+          <p>Agents that collect, analyse and then argue with each other before a human sees a number.</p>
+          <dl class="spec">
+            <div><dt>audit</dt><dd>12 specialist agents and three review stages over one account</dd></div>
+            <div><dt>filtering</dt><dd>225 recommendations in; 22 rejected and 30 removed as duplicates by the review stages</dd></div>
+            <div><dt>standing agent</dt><dd>knowledge base, shell toolkit, savings ledger, over 20 documented failure patterns</dd></div>
+            <div><dt>safety</dt><dd>read-only by rule and allowlist; the audit was checked afterwards against every script it ran and the cloud audit trail, with no changes found</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">Agents · verification · internal tooling</span>
+          <h3>An adversarial reviewer for AI output</h3>
+          <p>A second agent whose only job is to break the first agent's conclusion.</p>
+          <dl class="spec">
+            <div><dt>labels</dt><dd>every claim marked tested, cited or asserted</dd></div>
+            <div><dt>memory</dt><dd>persistent record of verified facts, open claims and past mistakes</dd></div>
+            <div><dt>effect</dt><dd>overturned four headline figures in the cost agent's first baseline before anyone relied on it</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">LLM observability</span>
+          <h3>Telemetry for AI coding assistants</h3>
+          <p>Usage and spend for engineering AI tools, in the same stack as everything else.</p>
+          <dl class="spec">
+            <div><dt>pipeline</dt><dd>OpenTelemetry Collector &rarr; Prometheus and Loki</dd></div>
+            <div><dt>cost</dt><dd>daily sync of token usage and spend to dashboards</dd></div>
+            <div><dt>enablement</dt><dd>playbooks for shared context and token-cost reuse across an engineering organisation</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">Research · AI safety</span>
+          <h3>What a guarantee on an LLM triager costs</h3>
+          <p>My M.Tech project and IEEE submission: the audit budget needed to certify how often a model wrongly closes a real security alert.</p>
+          <dl class="spec">
+            <div><dt>methods</dt><dd>risk control, confidence sequences, inverse-propensity weighting, sequential tests</dd></div>
+            <div><dt>result</dt><dd>24 audited misses for one exact certificate; a public benchmark supplies 2.4</dd></div>
+          </dl>
+          <a class="ai-link" href="research.html">Read the research &rarr;</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>&copy; <span id="year">2026</span> Karthick Raja Chinnathambi</div>
+      <div class="footer-meta footer-quotes">
+        <span class="fq" data-for="dial">&ldquo;It&rsquo;s hero time!&rdquo; <cite>Ben 10</cite></span>
+        <span class="fq" data-for="grimoire">&ldquo;Surpass your limits. Right here, right now.&rdquo; <cite>Yami Sukehiro, Black Clover</cite></span>
+        <span class="fq" data-for="nightfall">&ldquo;Arise.&rdquo; <cite>Sung Jinwoo, Solo Leveling</cite></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

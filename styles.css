@@ -53,6 +53,27 @@ html[data-skin='grimoire'] {
   --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cpath d='M36 6l30 30-30 30L6 36z' fill='none' stroke='%23d4a94e' stroke-opacity='.05'/%3E%3Ccircle cx='36' cy='36' r='2' fill='%23d4a94e' fill-opacity='.07'/%3E%3C/svg%3E");
 }
 
+html[data-skin='nightfall'] {
+  --bg: #04050c;
+  --bg-alt: #070a16;
+  --panel: #0a0f20;
+  --panel-2: #0f1630;
+  --border: #1a2550;
+  --border-strong: #2c3f86;
+  --text: #e8eeff;
+  --text-dim: #a4b1d8;
+  --text-muted: #6b78a6;
+  --brand: #4fa8ff;
+  --brand-2: #8f5bff;
+  --brand-ink: #030712;
+  --warn: #c9b6ff;
+  --glow: 0 0 26px rgba(79, 168, 255, 0.35);
+  --radius: 0px;
+  --font-display: 'Rajdhani', 'Inter', system-ui, sans-serif;
+  --display-spacing: 0.04em;
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M0 79.5h80M79.5 0v80' stroke='%234fa8ff' stroke-opacity='.05'/%3E%3Ccircle cx='20' cy='28' r='1' fill='%238f5bff' fill-opacity='.22'/%3E%3Ccircle cx='58' cy='62' r='1' fill='%234fa8ff' fill-opacity='.2'/%3E%3C/svg%3E");
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 
@@ -456,6 +477,82 @@ html[data-skin='dial'] .tl-marker { border-radius: 50%; }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13.5px; color: var(--text-muted); }
 .footer-meta { font-family: var(--font-mono); font-size: 12px; }
 
+/* ============================================================ Nightfall skin details */
+html[data-skin='nightfall'] h1, html[data-skin='nightfall'] h2 { text-transform: uppercase; }
+html[data-skin='nightfall'] .hero h1 { font-size: clamp(40px, 7vw, 82px); letter-spacing: 0.02em; }
+html[data-skin='nightfall'] .accent { background: linear-gradient(90deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 0 18px rgba(79, 168, 255, 0.45)); }
+html[data-skin='nightfall'] .kicker::before { content: 'LEVEL ' attr(data-n) ' \2014  '; font-family: var(--font-mono); }
+html[data-skin='nightfall'] .brand-mark { border-radius: 0; transform: none; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); border: 0; background: linear-gradient(160deg, var(--brand), var(--brand-2)); color: var(--brand-ink); }
+html[data-skin='nightfall'] .skin-ico { border-radius: 0; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); background: linear-gradient(160deg, var(--brand), var(--brand-2)); }
+html[data-skin='nightfall'] .btn-primary { background: linear-gradient(90deg, var(--brand), var(--brand-2)); }
+html[data-skin='nightfall'] .hero-bg {
+  background:
+    radial-gradient(ellipse 720px 520px at 82% 30%, rgba(143, 91, 255, 0.20), transparent 62%),
+    radial-gradient(ellipse 640px 460px at 10% 92%, rgba(79, 168, 255, 0.14), transparent 60%),
+    var(--pattern);
+}
+/* panels read as floating status windows */
+html[data-skin='nightfall'] .case, html[data-skin='nightfall'] .paper, html[data-skin='nightfall'] .ai-card,
+html[data-skin='nightfall'] .note, html[data-skin='nightfall'] .method, html[data-skin='nightfall'] .now-card,
+html[data-skin='nightfall'] .contact-card, html[data-skin='nightfall'] .readout, html[data-skin='nightfall'] .skill-groups,
+html[data-skin='nightfall'] .cred-col, html[data-skin='nightfall'] .pub, html[data-skin='nightfall'] .ideas {
+  background: linear-gradient(180deg, rgba(79, 168, 255, 0.07), rgba(10, 15, 32, 0.92) 26%);
+  border-color: var(--border-strong);
+  box-shadow: inset 0 1px 0 rgba(79, 168, 255, 0.55), 0 0 0 1px rgba(79, 168, 255, 0.06), 0 18px 50px -28px rgba(79, 168, 255, 0.55);
+}
+html[data-skin='nightfall'] .case::after, html[data-skin='nightfall'] .paper::after, html[data-skin='nightfall'] .ai-card::after {
+  content: ''; position: absolute; right: -1px; bottom: -1px; width: 28px; height: 28px;
+  border-right: 2px solid var(--brand-2); border-bottom: 2px solid var(--brand-2); pointer-events: none;
+}
+html[data-skin='nightfall'] .ring-a { border-top-color: var(--brand); border-bottom-color: var(--brand-2); }
+html[data-skin='nightfall'] .core { border-radius: 0; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); border: 0; background: linear-gradient(160deg, rgba(79, 168, 255, 0.9), rgba(143, 91, 255, 0.9)); }
+html[data-skin='nightfall'] .core span { color: var(--brand-ink); }
+html[data-skin='nightfall'] .dial-btn { border-radius: 0; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); border: 0; background: var(--panel-2); }
+html[data-skin='nightfall'] .dial-btn.is-on { background: linear-gradient(160deg, var(--brand), var(--brand-2)); }
+html[data-skin='nightfall'] .tl-marker { border-radius: 0; }
+html[data-skin='nightfall'] .metrics li::before { background: linear-gradient(160deg, var(--brand), var(--brand-2)); }
+html[data-skin='nightfall'] .readout-cmd::before { content: '[ SYSTEM ] '; color: var(--brand); }
+
+/* footer quote, one per skin */
+.footer-quotes { font-family: var(--font-display); font-size: 14px; letter-spacing: 0.03em; color: var(--text-dim); }
+.fq { display: none; }
+.fq cite { font-style: normal; font-family: var(--font-mono); font-size: 11.5px; color: var(--brand); margin-left: 8px; }
+.fq cite::before { content: '\2014  '; }
+html[data-skin='dial'] .fq[data-for='dial'], html[data-skin='grimoire'] .fq[data-for='grimoire'], html[data-skin='nightfall'] .fq[data-for='nightfall'] { display: inline; }
+
+/* ============================================================ Multi-page: tiles, briefs, chips */
+.page-first { padding-top: 150px; }
+.tile { display: flex; flex-direction: column; }
+.tile p { flex: 1; }
+.tile-go { margin-top: 14px; font-family: var(--font-mono); font-size: 12.5px; color: var(--brand); }
+.briefs { display: grid; gap: 18px; }
+.brief { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 28px 24px; position: relative; scroll-margin-top: 90px; transition: border-color var(--transition); }
+.brief:hover { border-color: var(--border-strong); }
+html[data-skin='dial'] .brief::before { content: ''; position: absolute; top: -1px; left: -1px; width: 40px; height: 40px; border-top: 2px solid var(--brand); border-left: 2px solid var(--brand); pointer-events: none; }
+html[data-skin='grimoire'] .brief { outline: 1px solid color-mix(in srgb, var(--brand) 22%, transparent); outline-offset: -7px; }
+html[data-skin='nightfall'] .brief { background: linear-gradient(180deg, rgba(79, 168, 255, 0.07), rgba(10, 15, 32, 0.92) 26%); border-color: var(--border-strong); box-shadow: inset 0 1px 0 rgba(79, 168, 255, 0.55), 0 18px 50px -28px rgba(79, 168, 255, 0.55); }
+.brief h3 { font-size: clamp(19px, 2.2vw, 23px); font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
+.brief-line { font-size: 15px; color: var(--text-dim); margin-bottom: 16px; max-width: 760px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.chips li { font-size: 13.5px; color: var(--text-dim); padding: 7px 12px; background: var(--panel-2); border: 1px solid var(--border-strong); border-radius: var(--radius); }
+.chips b { color: var(--brand); font-weight: 700; font-family: var(--font-display); }
+.chips.big li { font-size: 15px; padding: 12px 16px; }
+.chips.big b { font-size: 20px; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 18px; }
+.duo h4 { font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 10px; }
+.ticks li { position: relative; padding-left: 18px; margin-bottom: 8px; font-size: 14.5px; color: var(--text-dim); }
+.ticks li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; background: var(--brand); transform: rotate(45deg); }
+.ticks b { color: var(--text); font-weight: 600; }
+.paper-metrics.wide { grid-template-columns: repeat(6, minmax(0, 1fr)); margin: 4px 0 18px; }
+.paper .brief-line { max-width: 860px; }
+.bomb-grid li { justify-content: flex-start; }
+@media (max-width: 860px) {
+  .page-first { padding-top: 120px; }
+  .duo { grid-template-columns: 1fr; gap: 18px; }
+  .paper-metrics.wide { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .brief { padding: 22px 18px; }
+}
+
 /* ============================================================ Motion */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: none; }
@@ -471,3 +568,5 @@ html[data-skin='dial'] .tl-marker { border-radius: 50%; }
   .reveal { opacity: 1; transform: none; }
   .has-dial .skill-group { display: block; }
 }
+
+.paper > .paper-limits { margin-bottom: 16px; }

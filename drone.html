@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="dial">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drone engineering — Karthick Raja Chinnathambi</title>
+  <meta name="description" content="Built a quadcopter, logged 100+ flight hours and tuned it for heavy wind and signal disturbance." />
+  <meta name="author" content="Karthick Raja Chinnathambi" />
+  <link rel="canonical" href="https://karthickrajan.com/drone.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://karthickrajan.com/drone.html" />
+  <meta property="og:title" content="Drone engineering — Karthick Raja Chinnathambi" />
+  <meta property="og:description" content="Logging platforms, API gateways, FinOps, incident forensics, and research on the audit cost of AI safety guarantees." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#050805" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23050805'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%237dff4f' stroke-width='4'/%3E%3Ctext x='32' y='40' font-family='monospace' font-size='20' font-weight='700' text-anchor='middle' fill='%237dff4f'%3EKR%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Cinzel:wght@500;600;700&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Apply the saved skin before first paint
+    try { var s = localStorage.getItem('skin'); if (s === 'grimoire' || s === 'dial' || s === 'nightfall') document.documentElement.setAttribute('data-skin', s); } catch (e) {}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Karthick Raja Chinnathambi",
+    "url": "https://karthickrajan.com/",
+    "jobTitle": "DevOps Manager & Solution Architect — Cloud, Platform Engineering & DevSecOps",
+    "worksFor": { "@type": "Organization", "name": "Tonik Digital Bank" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "SRM Institute of Science and Technology" },
+      { "@type": "CollegeOrUniversity", "name": "Anna University" }
+    ],
+    "knowsAbout": ["AWS", "Google Cloud", "Kong API Gateway", "Grafana Loki", "DevSecOps", "FinOps", "Terraform", "Incident forensics", "Statistical risk control"],
+    "sameAs": ["https://www.linkedin.com/in/karthickraja", "https://github.com/damianwayne7"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">KR</span>
+        <span class="brand-name">karthickrajan<span class="dot">.</span>com</span>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="ai.html">AI &amp; ML</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="drone.html" class="is-active" aria-current="page">Drone</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button id="skinToggle" class="skin-toggle" aria-label="Switch visual theme">
+        <span class="skin-ico" aria-hidden="true"></span>
+        <span class="skin-label" id="skinLabel">Xeno-Dial</span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <section id="drone" class="section page-first">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-n="01" data-r="I">Drone engineering</span>
+        <h2>Built it, flew it, tuned it.</h2>
+      </div>
+      <div class="briefs">
+        <article class="brief" id="build">
+          <span class="case-tag">Corizo, on Drona Aviation's Pluto platform · Jun 2025 — Nov 2025</span>
+          <h3>Built, flown and tuned a quadcopter</h3>
+          <ul class="chips big"><li><b>100+</b> flight hours</li><li>Built <b>from parts</b></li><li>Tuned for <b>heavy wind</b></li><li>Tuned for <b>signal disturbance</b></li></ul>
+          <div class="duo">
+            <div>
+              <h4>Build</h4>
+              <ul class="ticks">
+                <li>Frame, motors, propellers, flight controller, battery, receiver</li>
+                <li>Calibration and firmware</li>
+                <li>Pre-flight checks, take-off, hover, landing, emergency procedure</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Control and sensors</h4>
+              <ul class="ticks">
+                <li>Accelerometer and gyro for attitude</li>
+                <li>Magnetometer and barometer for heading and height</li>
+                <li>Distance and time-of-flight sensing</li>
+                <li>Closed-loop stability: how motor speeds correct the craft</li>
+                <li>Programmed flight behaviours on the controller</li>
+              </ul>
+            </div>
+          </div>
+          <ul class="tech-tags"><li>Quadcopter assembly</li><li>Flight controller</li><li>IMU</li><li>Magnetometer</li><li>Barometer</li><li>Propellers and thrust</li><li>Motors and batteries</li><li>Flight tuning</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>&copy; <span id="year">2026</span> Karthick Raja Chinnathambi</div>
+      <div class="footer-meta footer-quotes">
+        <span class="fq" data-for="dial">&ldquo;It&rsquo;s hero time!&rdquo; <cite>Ben 10</cite></span>
+        <span class="fq" data-for="grimoire">&ldquo;Surpass your limits. Right here, right now.&rdquo; <cite>Yami Sukehiro, Black Clover</cite></span>
+        <span class="fq" data-for="nightfall">&ldquo;Arise.&rdquo; <cite>Sung Jinwoo, Solo Leveling</cite></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
