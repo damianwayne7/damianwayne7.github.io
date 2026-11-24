@@ -53,9 +53,10 @@
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#work">Work</a></li>
+        <li><a href="#ai">AI &amp; ML</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#more">Field notes</a></li>
         <li><a href="#research">Research</a></li>
-        <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -72,16 +73,18 @@
       <div class="hero-copy">
         <div class="hero-tag">DevOps Manager · Tonik Digital Bank · Chennai, India</div>
         <h1>Karthick Raja <span class="accent">Chinnathambi</span></h1>
-        <p class="hero-role">Cloud <span class="sep">/</span> Platform Engineering <span class="sep">/</span> DevSecOps <span class="sep">/</span> FinOps</p>
+        <p class="hero-role">Cloud <span class="sep">/</span> Platform Engineering <span class="sep">/</span> DevSecOps <span class="sep">/</span> AI &amp; ML <span class="sep">/</span> FinOps</p>
         <p class="hero-summary">
           I build and run the platforms a digital bank stands on: the logging pipeline, the API gateway,
-          the security toolchain and the delivery pipelines. I spend the rest of my time finding
+          the security toolchain, the delivery pipelines, and the ML pipelines, model serving and AI
+          agents that run on top of them. I spend the rest of my time finding
           <strong>faults that are already present but have not failed yet</strong>, and proving them with
           measurements. My M.Tech research in Artificial Intelligence asks the same question of AI systems:
           what does a safety guarantee actually cost?
         </p>
         <div class="hero-cta">
           <a href="#work" class="btn btn-primary">See the work</a>
+          <a href="#ai" class="btn btn-ghost">AI &amp; ML work</a>
           <a href="#research" class="btn btn-ghost">Read the research</a>
           <a href="#contact" class="btn btn-ghost">Contact</a>
         </div>
@@ -94,13 +97,21 @@
       </div>
     </div>
 
-    <dl class="hero-stats">
-      <div><dt>26</dt><dd>production services moved onto a self-hosted logging platform</dd></div>
-      <div><dt>346&nbsp;GB</dt><dd>of logs ingested in a 24-hour measurement</dd></div>
-      <div><dt>4</dt><dd>API gateway environments migrated from Kubernetes to ECS</dd></div>
-      <div><dt>0.06%</dt><dd>line-count difference when the old and new log pipelines were reconciled</dd></div>
-      <div><dt>15–22%</dt><dd>of monthly cloud spend identified as addressable</dd></div>
-    </dl>
+    <div class="readout" role="group" aria-label="Stack summary">
+      <div class="readout-bar"><span class="readout-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="readout-cmd">kr@platform:~$ stack --summary</span></div>
+      <dl class="readout-body">
+        <div><dt>compute</dt><dd>ECS Fargate <i>·</i> EKS <i>·</i> GKE <i>·</i> Lambda <i>·</i> GPU capacity providers <i>·</i> multi-cloud networking</dd></div>
+        <div><dt>gateway</dt><dd>Kong OSS <i>·</i> custom Lua plugins <i>·</i> OIDC at the edge <i>·</i> WebSocket proxying <i>·</i> SHA-pinned image deploys</dd></div>
+        <div><dt>telemetry</dt><dd>Grafana Loki, simple scalable <i>·</i> LogQL <i>·</i> Fluent Bit <i>·</i> Prometheus <i>·</i> OpenTelemetry <i>·</i> hundreds of GB of logs a day</dd></div>
+        <div><dt>security</dt><dd>Semgrep <i>·</i> Gitleaks <i>·</i> Trivy <i>·</i> SonarQube <i>·</i> DefectDojo <i>·</i> ephemeral CI runners</dd></div>
+        <div><dt>mobile sec</dt><dd>APK reverse engineering <i>·</i> runtime instrumentation <i>·</i> pinning and root-detection testing <i>·</i> attestation design, proposed</dd></div>
+        <div><dt>ai / ml</dt><dd>RAG on pgvector <i>·</i> self-hosted LLM serving on GPU <i>·</i> LangGraph agents <i>·</i> face matching and liveness <i>·</i> model pipelines on BigQuery</dd></div>
+        <div><dt>delivery</dt><dd>Terraform <i>·</i> CodePipeline blue/green <i>·</i> GitHub Actions <i>·</i> Liquibase</dd></div>
+        <div><dt>research</dt><dd>statistical risk control for LLM triage <i>·</i> confidence sequences <i>·</i> IEEE TDSC, submitted</dd></div>
+        <div><dt>hardware</dt><dd>quadcopter build <i>·</i> flight-controller calibration <i>·</i> sensor fusion basics <i>·</i> 100+ flight hours <i>·</i> wind and signal-loss tuning</dd></div>
+        <div><dt>learning</dt><dd>mathematics for quantum computing, from foundations <i>·</i> early stage</dd></div>
+      </dl>
+    </div>
   </header>
 
   <main id="main">
@@ -110,8 +121,8 @@
     <div class="container">
       <div class="section-head">
         <span class="kicker" data-n="01" data-r="I">Selected work</span>
-        <h2>Six things I built or fixed, with the numbers.</h2>
-        <p class="section-sub">Each one states the problem, what I did, and what was measured afterwards. Internal identifiers are left out on purpose.</p>
+        <h2>Platforms built, systems fixed, defences tested.</h2>
+        <p class="section-sub">Each one states the problem, what I did, and what was measured or designed. This is a public-safe summary: no internal names, hostnames or customer data, and the mechanisms are described without the incidents around them.</p>
       </div>
 
       <div class="cases">
@@ -124,12 +135,12 @@
           <div class="case-body">
             <div>
               <h4>Problem</h4>
-              <p>Log ingestion was the single largest line on the cloud bill, and production alerting depended on the same service, so it could not simply be switched off.</p>
+              <p>Log ingestion on a managed service was costly at our volume, and production alerting depended on the same service, so it could not simply be switched off.</p>
             </div>
             <div>
               <h4>What I did</h4>
               <ul>
-                <li>Designed and built Loki in Simple Scalable mode on ECS Fargate: object storage backend, replication factor 2 across two zones, long-term retention on tiered object storage.</li>
+                <li>Designed and built Loki in Simple Scalable mode on ECS Fargate: object storage backend, replicated writes across zones, long-term retention on tiered object storage.</li>
                 <li>Dual-shipped every service through Fluent Bit sidecars so existing alarms kept firing while parity was proven.</li>
                 <li>Split the read path into frontend, scheduler, querier pool and index gateway, with a custom Lambda autoscaler driven by in-flight sub-queries.</li>
                 <li>Found the new pipeline silently dropping batches during the parallel run. The system of record was unaffected. Traced it to a saturated write tier, resized, and held zero drops.</li>
@@ -138,20 +149,20 @@
             <div>
               <h4>Measured</h4>
               <ul class="metrics">
-                <li><b>8.43M vs 8.44M</b> lines in a 30-minute reconciliation across 25 services (−0.06%)</li>
+                <li><b>8.43M vs 8.44M</b> lines in a 30-minute reconciliation across the fleet (−0.06%)</li>
                 <li><b>0</b> logs dropped and <b>52/52</b> alarms healthy on the 24-hour parity check</li>
                 <li><b>−80%</b> bytes on the wire after enabling gzip (5.1×)</li>
-                <li>~982,000 dropped batches a day in the new pipeline <b>→ 0</b> after the write-tier fix</li>
+                <li>Dropped batches in the new pipeline <b>→ 0</b> after the write-tier fix</li>
               </ul>
             </div>
           </div>
-          <ul class="tech-tags"><li>Grafana Loki 3.7</li><li>LogQL</li><li>Fluent Bit / FireLens</li><li>ECS Fargate</li><li>S3</li><li>Lambda</li><li>Terraform</li><li>Grafana alerting</li></ul>
+          <ul class="tech-tags"><li>Grafana Loki</li><li>LogQL</li><li>Fluent Bit / FireLens</li><li>ECS Fargate</li><li>S3</li><li>Lambda</li><li>Terraform</li><li>Grafana alerting</li></ul>
         </article>
 
         <article class="case">
           <header>
             <span class="case-tag">API gateway · 2026</span>
-            <h3>Moving the bank's API gateway from Kubernetes to ECS, in four environments</h3>
+            <h3>Moving an API gateway from Kubernetes to ECS, one environment at a time</h3>
           </header>
           <div class="case-body">
             <div>
@@ -161,7 +172,7 @@
             <div>
               <h4>What I did</h4>
               <ul>
-                <li>Built the image supply chain: upstream Kong 3.5 mirrored internally, 23 custom Lua plugins baked in, immutable tags, deploys triggered by a tag move and pinned to a commit.</li>
+                <li>Built the image supply chain: upstream Kong mirrored internally, the custom Lua plugins baked in, deploys triggered by a tag move and pinned to a commit hash.</li>
                 <li>Solved the boot-ordering constraint with an in-place rename, a backup table and reverse SQL per environment, proven on dev, then test, then UAT.</li>
                 <li>Built production on ECS with a Multi-AZ PostgreSQL database and single sign-on for the admin UI, ran it in parallel, then cut public traffic over by DNS.</li>
                 <li>Added identity-provider authentication in front of the gateway's management plane, with separate trust for production.</li>
@@ -170,15 +181,15 @@
             <div>
               <h4>Measured</h4>
               <ul class="metrics">
-                <li><b>4</b> environments cut over one at a time, production last</li>
+                <li>Every environment cut over <b>one at a time</b>, production last</li>
                 <li><b>44/44</b> identical status codes in the UAT parity smoke test; 2–4&nbsp;ms on ECS against 8–16&nbsp;ms before</li>
-                <li>Production: <b>471</b> routes and <b>258</b> services, counts equal to the source dump</li>
+                <li>Routes, services and plugins carried across with counts <b>equal to the source</b> in every environment</li>
                 <li>Later hostname change on production done as a rolling deploy with both tasks healthy throughout</li>
               </ul>
             </div>
           </div>
           <p class="case-note">The plugins themselves were written by teammates. My part was the architecture, infrastructure, pipelines, migration and hardening.</p>
-          <ul class="tech-tags"><li>Kong OSS 3.5</li><li>Lua</li><li>ECS Fargate</li><li>RDS PostgreSQL</li><li>ALB OIDC</li><li>Entra ID</li><li>Cloudflare</li><li>CodePipeline</li></ul>
+          <ul class="tech-tags"><li>Kong OSS</li><li>Lua</li><li>ECS Fargate</li><li>RDS PostgreSQL</li><li>ALB OIDC</li><li>Entra ID</li><li>Cloudflare</li><li>CodePipeline</li></ul>
         </article>
 
         <article class="case">
@@ -203,7 +214,7 @@
             <div>
               <h4>Measured</h4>
               <ul class="metrics">
-                <li><b>26</b> microservices covered by the shared pipelines</li>
+                <li><b>Every</b> service repository calls the same shared workflows</li>
                 <li><b>One</b> vulnerability backlog for all of them, in place of per-tool reports</li>
                 <li>One aggregate query: <b>7,764&nbsp;ms cold, 19&nbsp;ms warm</b> after resizing the database cache</li>
                 <li>The runner autoscaler runs for under <b>$0.05</b> a month</li>
@@ -221,7 +232,7 @@
           <div class="case-body">
             <div>
               <h4>Problem</h4>
-              <p>Spend was hard to attribute. Nearly half of it carried no environment tag, and the obvious savings lists did not match what the bill would actually do.</p>
+              <p>Spend was hard to attribute. Much of it carried no usable tag, and the obvious savings lists did not match what the bill would actually do.</p>
             </div>
             <div>
               <h4>What I did</h4>
@@ -229,17 +240,17 @@
                 <li>Decomposed the bill by service, cluster, environment and application from billing and usage data, and traced anomalies to their callers.</li>
                 <li>Produced a prioritised savings catalogue: log pipeline, right-sizing, off-hours scheduling, storage lifecycle, data transfer.</li>
                 <li>Ran a read-only audit with twelve specialist agents and three review stages. Of 225 recommendations, 22 were rejected and 30 were duplicates before anything reached a human.</li>
-                <li>Found the nightly shutdown job had been failing silently for about ten weeks, and fixed it. Tooling now sits switched off for 43% of the week.</li>
+                <li>Found a scheduled shutdown job that had been failing silently, and got it fixed. Tooling now switches off outside working hours.</li>
                 <li>Built a standing read-only cost agent with a knowledge base, a savings ledger and a second agent that attacks its numbers.</li>
               </ul>
             </div>
             <div>
               <h4>Found</h4>
               <ul class="metrics">
-                <li>Savings worth <b>15–22%</b> of the monthly run-rate identified</li>
-                <li><b>71%</b> of spend is shared platform cost; <b>45%</b> has no environment tag</li>
-                <li>The provider's own recommendations cover about <b>4.6%</b> of optimisable spend</li>
-                <li>Container right-sizing was worth <b>$0</b> after discounts, because the commitment was already saturated</li>
+                <li>Savings worth a <b>double-digit share</b> of the monthly bill identified</li>
+                <li>Most spend was <b>shared platform cost</b> that tags alone could not attribute</li>
+                <li>The provider's own recommendations covered <b>under 5%</b> of what could be optimised</li>
+                <li>Right-sizing that looked valuable at list price was worth <b>nothing after discounts</b>, because existing commitments already covered it</li>
               </ul>
             </div>
           </div>
@@ -255,7 +266,7 @@
           <div class="case-body">
             <div>
               <h4>Problem</h4>
-              <p>Schema scripts for twelve databases, used by 26 microservices, were promoted by moving files between branches. There was no ledger of what had run where, so environments drifted.</p>
+              <p>Schema scripts for a dozen databases shared by many services were promoted by moving files between branches. There was no ledger of what had run where, so environments drifted.</p>
             </div>
             <div>
               <h4>What I did</h4>
@@ -282,13 +293,46 @@
 
         <article class="case">
           <header>
+            <span class="case-tag">Mobile application security · 2026</span>
+            <h3>Mobile app security: testing client-side defences and designing server-side ones</h3>
+          </header>
+          <div class="case-body">
+            <div>
+              <h4>Scenario</h4>
+              <p>The standard threat model for any mobile banking app: the attacker controls the device. Checks that run on the phone raise the cost of an attack, but the server has to assume they can be bypassed.</p>
+            </div>
+            <div>
+              <h4>What I did</h4>
+              <ul>
+                <li>Reverse-engineered successive builds of a React Native app: decompiled the Java layer, analysed the native libraries, mapped the API surface and traced how pinning is wired.</li>
+                <li>Built an instrumented lab, a rooted emulator with a runtime instrumentation agent, to test how tamper, hook and root detection and certificate pinning hold up on a device the tester controls.</li>
+                <li>Reviewed the in-house security SDK from source and wrote hardening reviews for later builds.</li>
+                <li>Wrote the methodology guide so the team can repeat the assessment on every release.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What I proposed</h4>
+              <ul class="metrics">
+                <li><b>Dynamic pinning:</b> pins delivered as a signed, versioned, expiring bundle that the app verifies with a public key, so they rotate without an app release</li>
+                <li><b>No secrets in the binary:</b> asymmetric encryption to a server-held key, or a per-session key after the app proves itself</li>
+                <li><b>App attestation:</b> OS-backed proof of a genuine app exchanged for a short-lived token the gateway validates on every call</li>
+                <li><b>Device-bound tokens</b> and per-request signing</li>
+              </ul>
+            </div>
+          </div>
+          <p class="case-note">Status: design proposals drafted for review. Lab work on test builds with test accounts. Findings stay internal.</p>
+          <ul class="tech-tags"><li>jadx</li><li>apktool</li><li>Frida</li><li>Hermes / React Native</li><li>Rooted emulator</li><li>Play Integrity</li><li>App Attest</li><li>KMS</li><li>Gateway token validation</li></ul>
+        </article>
+
+        <article class="case">
+          <header>
             <span class="case-tag">AI platform · 2026</span>
             <h3>The infrastructure for a conversational banking assistant</h3>
           </header>
           <div class="case-body">
             <div>
               <h4>Problem</h4>
-              <p>A chat assistant needed a complete test environment: admin portal, services, retrieval, a self-hosted language model, WebSocket routing and delivery pipelines.</p>
+              <p>A banking chat assistant needed a complete test environment: admin portal, services, retrieval, a self-hosted language model, WebSocket routing and delivery pipelines.</p>
             </div>
             <div>
               <h4>What I did</h4>
@@ -302,9 +346,9 @@
             <div>
               <h4>Measured</h4>
               <ul class="metrics">
-                <li>Model answers from <b>~26&nbsp;s on CPU to 1.2–2.6&nbsp;s</b> on GPU</li>
+                <li>Model answers from <b>~26&nbsp;s on CPU to about 1–3&nbsp;s</b> on GPU</li>
                 <li>FAQ answers in <b>0.1–0.3&nbsp;s</b>; a new FAQ answerable 3–4&nbsp;s after saving</li>
-                <li>The GPU was over <b>80%</b> of the stack's cost</li>
+                <li>The GPU <b>dominated</b> the stack's cost, which made its schedule the main cost lever</li>
                 <li>History store costed over five years: <b>$46 to $4,875</b> for the cheapest design, depending on volume</li>
               </ul>
             </div>
@@ -316,11 +360,199 @@
     </div>
   </section>
 
+  <!-- ============================ AI & ML ============================ -->
+  <section id="ai" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-n="02" data-r="II">AI &amp; ML engineering</span>
+        <h2>Models, pipelines and agents: what we have built and run.</h2>
+        <p class="section-sub">Each card says where it runs. The application logic of the assistant belongs to the AI engineering team; the platform under it is mine.</p>
+      </div>
+
+      <div class="ai-grid">
+
+        <article class="ai-card ai-wide">
+          <span class="note-tag">LLM serving · retrieval · test environment</span>
+          <h3>Retrieval-augmented assistant on self-hosted models</h3>
+          <p>The serving platform behind a banking chat assistant. The language model, the embeddings and the vector store are self-hosted, not called from an external model API.</p>
+          <dl class="spec">
+            <div><dt>answer path</dt><dd>staged: cheap matches first, and the language model only when they fail</dd></div>
+            <div><dt>embeddings</dt><dd>an open embedding model, 768 dimensions, served by a text-embeddings inference container</dd></div>
+            <div><dt>vector store</dt><dd>PostgreSQL with pgvector; session state in Redis Stack</dd></div>
+            <div><dt>generation</dt><dd>an open-weight 7B model, 4-bit quantised, on a T4 GPU behind an ECS capacity provider</dd></div>
+            <div><dt>ingest</dt><dd>admin portal &rarr; service &rarr; queue &rarr; container Lambda &rarr; embeddings &rarr; pgvector; new content is answerable 3&ndash;4 s after saving</dd></div>
+            <div><dt>tuning</dt><dd>match threshold set to 0.75 after measuring that unrelated questions score 0.45&ndash;0.60 cosine</dd></div>
+            <div><dt>latency</dt><dd>~26 s on CPU &rarr; about 1&ndash;3 s on GPU for generated answers; 0.1&ndash;0.3 s for matched answers</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">ML in production · vision and tabular</span>
+          <h3>Face verification, de-duplication and a segmentation model</h3>
+          <p>The machine-learning services behind customer onboarding and analytics, deployed and run across two clouds.</p>
+          <dl class="spec">
+            <div><dt>face match</dt><dd>Amazon Rekognition for face comparison and liveness in the onboarding flow</dd></div>
+            <div><dt>de-duplication</dt><dd>a face de-duplication service on GCP that checks a new applicant against existing customers</dd></div>
+            <div><dt>segmentation</dt><dd>BigQuery &rarr; feature engineering &rarr; K-Means clustering &rarr; reviewed labels &rarr; random-forest classifier for real-time inference</dd></div>
+            <div><dt>delivery</dt><dd>Cloud Build pipelines to Cloud Run on GCP; container services on AWS</dd></div>
+            <div><dt>my part</dt><dd>deployment, pipelines, networking and operations. The models themselves are not my work</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">Agents · operations · hackathon</span>
+          <h3>Multi-agent incident investigator</h3>
+          <p>Built with two teammates. An incident goes in, a root-cause report comes out.</p>
+          <dl class="spec">
+            <div><dt>graph</dt><dd>LangGraph supervisor routing to log, APM, database and scheduler agents, then a root-cause agent</dd></div>
+            <div><dt>tools</dt><dd>Loki and Prometheus query tools; a Redis event log feeding a live status dashboard</dd></div>
+            <div><dt>models</dt><dd>an open-weight 8B model on Ollama, with one model file (prompt and parameters) per agent role</dd></div>
+            <div><dt>runtime</dt><dd>FastAPI service; local stack with tracing, metrics and logs</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">Agents · FinOps · internal tooling</span>
+          <h3>Agent teams that audit a cloud bill</h3>
+          <p>Agents that collect, analyse and then argue with each other before a human sees a number.</p>
+          <dl class="spec">
+            <div><dt>audit</dt><dd>12 specialist agents and three review stages over one account</dd></div>
+            <div><dt>filtering</dt><dd>225 recommendations in; 22 rejected and 30 removed as duplicates by the review stages</dd></div>
+            <div><dt>standing agent</dt><dd>knowledge base, shell toolkit, savings ledger, over 20 documented failure patterns</dd></div>
+            <div><dt>safety</dt><dd>read-only by rule and allowlist; the audit was checked afterwards against every script it ran and the cloud audit trail, with no changes found</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">Agents · verification · internal tooling</span>
+          <h3>An adversarial reviewer for AI output</h3>
+          <p>A second agent whose only job is to break the first agent's conclusion.</p>
+          <dl class="spec">
+            <div><dt>labels</dt><dd>every claim marked tested, cited or asserted</dd></div>
+            <div><dt>memory</dt><dd>persistent record of verified facts, open claims and past mistakes</dd></div>
+            <div><dt>effect</dt><dd>overturned four headline figures in the cost agent's first baseline before anyone relied on it</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">LLM observability</span>
+          <h3>Telemetry for AI coding assistants</h3>
+          <p>Usage and spend for engineering AI tools, in the same stack as everything else.</p>
+          <dl class="spec">
+            <div><dt>pipeline</dt><dd>OpenTelemetry Collector &rarr; Prometheus and Loki</dd></div>
+            <div><dt>cost</dt><dd>daily sync of token usage and spend to dashboards</dd></div>
+            <div><dt>enablement</dt><dd>playbooks for shared context and token-cost reuse across an engineering organisation</dd></div>
+          </dl>
+        </article>
+
+        <article class="ai-card">
+          <span class="note-tag">Research · AI safety</span>
+          <h3>What a guarantee on an LLM triager costs</h3>
+          <p>My M.Tech project and IEEE submission: the audit budget needed to certify how often a model wrongly closes a real security alert.</p>
+          <dl class="spec">
+            <div><dt>methods</dt><dd>risk control, confidence sequences, inverse-propensity weighting, sequential tests</dd></div>
+            <div><dt>result</dt><dd>24 audited misses for one exact certificate; a public benchmark supplies 2.4</dd></div>
+          </dl>
+          <a class="ai-link" href="#research">Read the research &rarr;</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SKILLS ============================ -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-n="03" data-r="III">Skills</span>
+        <h2>What I work with, by area.</h2>
+        <p class="section-sub">Turn the selector to switch area. Each area says what I use it for; the work it comes from is above.</p>
+      </div>
+
+      <div class="skills-wrap" id="skillsWrap">
+        <div class="dial" id="dial" aria-hidden="true">
+          <div class="dial-ring"></div>
+          <div class="dial-core">
+            <span class="dial-count" id="dialCount"></span>
+            <span class="dial-title" id="dialTitle"></span>
+            <div class="dial-nav">
+              <button type="button" id="dialPrev" aria-label="Previous area">&#8249;</button>
+              <button type="button" id="dialNext" aria-label="Next area">&#8250;</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-groups" id="skillGroups">
+          <section class="skill-group" data-code="AWS">
+            <h3>Cloud: AWS</h3>
+            <p class="skill-use">Where the bank's workloads run. My team and I build and operate the container platform, networking, data stores and event plumbing on it.</p>
+            <ul class="pill-list"><li>ECS Fargate &amp; Spot</li><li>EKS</li><li>EC2 GPU capacity providers</li><li>ALB / NLB</li><li>Cloud Map &amp; Service Connect</li><li>VPC peering</li><li>Lambda</li><li>EventBridge</li><li>SQS</li><li>Step Functions</li><li>S3</li><li>CloudFront</li><li>EFS</li><li>RDS</li><li>ElastiCache</li><li>DynamoDB</li><li>MSK</li><li>Transfer Family</li><li>Secrets Manager</li><li>IAM</li><li>CloudTrail</li><li>CloudWatch</li></ul>
+          </section>
+          <section class="skill-group" data-code="GCP">
+            <h3>Cloud: GCP, edge &amp; identity</h3>
+            <p class="skill-use">The second cloud and the edge: analytics workloads and single sign-on in front of internal tools.</p>
+            <ul class="pill-list"><li>Cloud Run</li><li>GKE</li><li>Global load balancing</li><li>Cloud Armor</li><li>Pub/Sub</li><li>BigQuery</li><li>Cloud Build</li><li>Cloud Monitoring</li><li>Cloudflare</li><li>Microsoft Entra ID</li><li>OIDC</li><li>SAML</li><li>Site-to-site VPN</li></ul>
+          </section>
+          <section class="skill-group" data-code="CTR">
+            <h3>Containers &amp; orchestration</h3>
+            <p class="skill-use">How everything ships. I design task definitions, health checks and rollouts so a bad deploy is caught and rolled back.</p>
+            <ul class="pill-list"><li>Docker</li><li>buildx</li><li>Kubernetes</li><li>Helm</li><li>ECS task design</li><li>Container health checks</li><li>Deployment circuit breakers</li><li>ECR lifecycle &amp; immutable tags</li><li>One-off task tooling</li><li>Istio</li></ul>
+          </section>
+          <section class="skill-group" data-code="API">
+            <h3>API gateway</h3>
+            <p class="skill-use">The front door for every API call. I migrated it between platforms, run its image build and deploy pipeline, and put identity in front of its management plane.</p>
+            <ul class="pill-list"><li>Kong OSS</li><li>Custom Lua plugins</li><li>OpenResty</li><li>Router &amp; plugin priority internals</li><li>OAuth2</li><li>JWT validation</li><li>Rate limiting</li><li>WebSocket proxying</li><li>mTLS</li><li>WSO2 Micro Integrator</li></ul>
+          </section>
+          <section class="skill-group" data-code="OBS">
+            <h3>Observability</h3>
+            <p class="skill-use">Built the self-hosted logging platform and measured line-count parity against the service it is replacing.</p>
+            <ul class="pill-list"><li>Grafana Loki</li><li>LogQL</li><li>Grafana</li><li>Prometheus</li><li>Pushgateway</li><li>Fluent Bit / FireLens</li><li>OpenTelemetry Collector</li><li>Datadog APM</li><li>CloudWatch metrics &amp; alarms</li><li>Access-log analysis</li><li>Jaeger</li></ul>
+          </section>
+          <section class="skill-group" data-code="SEC">
+            <h3>DevSecOps &amp; security</h3>
+            <p class="skill-use">One scanning platform any repository can call, one vulnerability backlog, and the forensics when something goes wrong.</p>
+            <ul class="pill-list"><li>Semgrep</li><li>Gitleaks</li><li>SonarQube</li><li>Trivy</li><li>DefectDojo</li><li>Burp Suite</li><li>Incident response &amp; forensics</li><li>Access-rule testing</li><li>Least-privilege IAM &amp; security groups</li><li>Secret management</li><li>Threat modelling</li><li>PCI DSS</li></ul>
+          </section>
+          <section class="skill-group" data-code="MOB">
+            <h3>Mobile application security</h3>
+            <p class="skill-use">Assessments of our own test builds, and the defence design proposed from them.</p>
+            <ul class="pill-list"><li>APK reverse engineering</li><li>jadx</li><li>apktool</li><li>Frida</li><li>Hermes / React Native analysis</li><li>Root and tamper detection testing</li><li>Certificate pinning testing</li><li>Dynamic pinning design</li><li>Attestation design (Play Integrity / App Attest)</li><li>Device-bound token design</li><li>MASVS-style reporting</li></ul>
+          </section>
+          <section class="skill-group" data-code="CI">
+            <h3>CI/CD &amp; infrastructure as code</h3>
+            <p class="skill-use">Pipelines, self-hosted runners, blue/green deploys, schema change management (proof of concept) and the Terraform underneath.</p>
+            <ul class="pill-list"><li>GitHub Actions</li><li>Reusable workflows</li><li>Self-hosted ephemeral runners</li><li>CodePipeline</li><li>CodeBuild</li><li>CodeDeploy blue/green</li><li>Jenkins</li><li>Cloud Build</li><li>Liquibase</li><li>Rollback planning</li><li>Terraform</li><li>Module design</li><li>Layered remote state</li><li>Drift analysis</li><li>YAML service catalogues</li><li>Ansible</li></ul>
+          </section>
+          <section class="skill-group" data-code="DB">
+            <h3>Data stores &amp; messaging</h3>
+            <p class="skill-use">Operated, tuned and debugged down to storage internals when a tool stopped booting.</p>
+            <ul class="pill-list"><li>PostgreSQL</li><li>PostgreSQL internals &amp; tuning</li><li>pgvector</li><li>MySQL</li><li>Redis / Valkey</li><li>Elasticsearch</li><li>DynamoDB</li><li>BigQuery</li><li>Kafka</li><li>Alembic migrations</li></ul>
+          </section>
+          <section class="skill-group" data-code="AI">
+            <h3>AI &amp; machine learning</h3>
+            <p class="skill-use">Serving stacks for self-hosted models, agent systems, and research on what a guarantee about a model costs.</p>
+            <ul class="pill-list"><li>Retrieval-augmented generation</li><li>Embeddings services</li><li>Self-hosted LLMs on GPU</li><li>LangGraph</li><li>Multi-agent systems</li><li>Amazon Rekognition</li><li>Face matching and liveness</li><li>scikit-learn pipelines</li><li>Kubeflow</li><li>MLflow</li><li>KubeRay</li><li>PyTorch</li><li>Statistical risk control</li><li>Monte Carlo simulation</li></ul>
+          </section>
+          <section class="skill-group" data-code="FIN">
+            <h3>FinOps</h3>
+            <p class="skill-use">Taking a cloud bill apart line by line, then separating savings that are real from ones that only look real.</p>
+            <ul class="pill-list"><li>Bill decomposition</li><li>Cost allocation without tags</li><li>Savings Plans &amp; reserved capacity</li><li>Right-sizing</li><li>Anomaly attribution</li><li>Off-hours scheduling</li><li>Storage lifecycle</li><li>Cost modelling</li><li>Capacity forecasting</li></ul>
+          </section>
+          <section class="skill-group" data-code="DEV">
+            <h3>Languages &amp; hardware</h3>
+            <p class="skill-use">What I write in, what I read and patch when the fault is in the application, and the hardware I have built and flown.</p>
+            <ul class="pill-list"><li>Python</li><li>Bash</li><li>SQL</li><li>HCL</li><li>Lua</li><li>PowerShell</li><li>FastAPI</li><li>Reads and fixes Java / Spring Boot</li><li>Reads and fixes Node.js, React, Vue</li><li>Quadcopter assembly</li><li>Flight-controller calibration</li><li>IMU, magnetometer, barometer</li><li>Flight tuning</li></ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================ FIELD NOTES ============================ -->
   <section id="more" class="section section-alt">
     <div class="container">
       <div class="section-head">
-        <span class="kicker" data-n="02" data-r="II">Field notes</span>
+        <span class="kicker" data-n="04" data-r="IV">Field notes</span>
         <h2>Root causes, designs and smaller builds.</h2>
         <p class="section-sub">Shorter entries. Filter by the kind of work.</p>
       </div>
@@ -331,7 +563,6 @@
         <button class="filter" data-filter="platform" aria-pressed="false">Platform</button>
         <button class="filter" data-filter="security" aria-pressed="false">Security</button>
         <button class="filter" data-filter="design" aria-pressed="false">Design</button>
-        <button class="filter" data-filter="ai" aria-pressed="false">AI</button>
       </div>
 
       <div class="notes-grid" id="notes">
@@ -339,25 +570,25 @@
         <article class="note" data-cat="rca">
           <span class="note-tag">Root cause</span>
           <h3>A service advertised before it was listening</h3>
-          <p>Service discovery published new task addresses 193 seconds before the process accepted connections, because the task had no container health check. A second fault was a restart loop with a 4 to 24 second margin between two health checks. Proved the mechanism in the same account and wrote an ordered fix.</p>
+          <p>Service discovery can publish a new task address before the process accepts connections when the task has no container health check. A second fault class sits next to it: a restart loop caused by two health checks whose timings are seconds apart. Proved both mechanisms and wrote an ordered fix.</p>
         </article>
 
         <article class="note" data-cat="rca">
           <span class="note-tag">Root cause</span>
           <h3>A database password that rotated itself</h3>
-          <p>A managed secret rotated every seven days. Containers read secrets only at launch, so running tasks kept the old password and a non-production gateway lost its database for about an hour. Documented the event-driven design that makes rotation safe.</p>
+          <p>A managed secret rotates on a schedule. Containers read secrets only at launch, so a running task keeps the old password and loses its database when rotation fires. Documented the event-driven design that makes rotation safe: rotation succeeded, then redeploy.</p>
         </article>
 
         <article class="note" data-cat="rca">
           <span class="note-tag">Root cause</span>
           <h3>Gateway timeouts that were not the load balancer's fault</h3>
-          <p>A wave of 504s was blamed on scale-down. Four real deregistration events produced zero errors, which ruled that out. The cause was a database stall during a maintenance patch cascading through connection pools. A separate measurement showed a planned database upgrade was unnecessary.</p>
+          <p>A burst of 504s was blamed on scale-down. Real deregistration events produced zero errors, which ruled that out as a negative control. The cause was a database stall cascading through connection pools. A separate measurement showed a planned database upgrade was unnecessary.</p>
         </article>
 
         <article class="note" data-cat="rca">
           <span class="note-tag">Root cause</span>
           <h3>A function that timed out without telling anyone</h3>
-          <p>A 128 MB function timed out on large files and raised no alarm. The same code ran in 2.19 seconds locally and over 60 on the platform. Memory was the CPU throttle. Resized it, and the backlog cleared.</p>
+          <p>A small-memory function can time out on large files without raising an alarm. The same code ran in 2.19 seconds locally and over 60 on the platform. Memory was the CPU throttle. Resized it, and the backlog cleared.</p>
         </article>
 
         <article class="note" data-cat="rca">
@@ -398,8 +629,8 @@
 
         <article class="note" data-cat="platform">
           <span class="note-tag">Platform</span>
-          <h3>API management platform: outage, recovery, hardening</h3>
-          <p>A backend that migrates its own schema on boot crash-looped when the deploy branch fell behind the database. No health check meant nothing noticed. Recovered, reconciled the branch, then added a container health check, a deployment circuit breaker with rollback, and secret scanning before commit.</p>
+          <h3>A backend that migrates its own schema on boot</h3>
+          <p>Self-migrating services crash-loop when a deploy branch falls behind the database, and a rollback to an older image fails the same way. The fix is structural: reconcile the branch, add a container health check and a deployment circuit breaker with rollback, and scan for secrets before commit.</p>
         </article>
 
         <article class="note" data-cat="platform">
@@ -417,7 +648,7 @@
         <article class="note" data-cat="platform">
           <span class="note-tag">Platform</span>
           <h3>Sprint capacity reporting for the DevOps team</h3>
-          <p>Built an automated capacity report for the five-person team I manage, generated from the issue tracker: per-person load, epic roll-up and totals that reconcile, with a note on every number that should not be quoted out of context.</p>
+          <p>Built an automated capacity report for the team I manage, generated from the issue tracker: per-person load, epic roll-up and totals that reconcile, with a note on every number that should not be quoted out of context.</p>
         </article>
 
         <article class="note" data-cat="security">
@@ -444,24 +675,6 @@
           <p>Measured real document sizes, then costed five designs over five years at three volumes. A key-value store with expiry plus object storage won at every volume. Query-in-place on object storage looked cheap and was the most expensive by far.</p>
         </article>
 
-        <article class="note" data-cat="ai">
-          <span class="note-tag">AI</span>
-          <h3>Multi-agent operations assistant</h3>
-          <p>Hackathon build with two teammates. A supervisor routes an incident to log, metrics, database and scheduler agents, then to a root-cause agent, coordinated over an event bus and running on local open-weight models.</p>
-        </article>
-
-        <article class="note" data-cat="ai">
-          <span class="note-tag">AI</span>
-          <h3>Telemetry for AI coding assistants</h3>
-          <p>An OpenTelemetry pipeline that sends assistant usage into the existing metrics and logging stack, with a daily cost sync and a dashboard, so adoption and spend are visible per team.</p>
-        </article>
-
-        <article class="note" data-cat="ai">
-          <span class="note-tag">AI</span>
-          <h3>Machine-learning platform</h3>
-          <p>Training, evaluation and inference pipelines on Kubernetes, with a Python inference layer over the data warehouse for real-time scoring and distributed training to cut training time.</p>
-        </article>
-
       </div>
     </div>
   </section>
@@ -470,7 +683,7 @@
   <section id="research" class="section">
     <div class="container">
       <div class="section-head">
-        <span class="kicker" data-n="03" data-r="III">Research</span>
+        <span class="kicker" data-n="05" data-r="V">Research</span>
         <h2>M.Tech in Artificial Intelligence: what does a safety guarantee cost?</h2>
         <p class="section-sub">SRM Institute of Science and Technology, Kattankulathur. Final project submitted November 2026.</p>
       </div>
@@ -571,87 +784,11 @@
     </div>
   </section>
 
-  <!-- ============================ SKILLS ============================ -->
-  <section id="skills" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker" data-n="04" data-r="IV">Skills</span>
-        <h2>The stack, by area.</h2>
-        <p class="section-sub">Turn the selector to switch area. Everything listed is something I have used in the work above.</p>
-      </div>
-
-      <div class="skills-wrap" id="skillsWrap">
-        <div class="dial" id="dial" aria-hidden="true">
-          <div class="dial-ring"></div>
-          <div class="dial-core">
-            <span class="dial-count" id="dialCount"></span>
-            <span class="dial-title" id="dialTitle"></span>
-            <div class="dial-nav">
-              <button type="button" id="dialPrev" aria-label="Previous area">&#8249;</button>
-              <button type="button" id="dialNext" aria-label="Next area">&#8250;</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-groups" id="skillGroups">
-          <section class="skill-group" data-code="AWS">
-            <h3>Cloud: AWS</h3>
-            <ul class="pill-list"><li>ECS Fargate &amp; Spot</li><li>EKS</li><li>EC2 GPU capacity providers</li><li>ALB / NLB</li><li>Cloud Map &amp; Service Connect</li><li>VPC peering</li><li>Lambda</li><li>EventBridge</li><li>SQS</li><li>Step Functions</li><li>S3</li><li>CloudFront</li><li>EFS</li><li>RDS</li><li>ElastiCache</li><li>DynamoDB</li><li>MSK</li><li>Transfer Family</li><li>Secrets Manager</li><li>IAM</li><li>CloudTrail</li><li>CloudWatch</li></ul>
-          </section>
-          <section class="skill-group" data-code="GCP">
-            <h3>Cloud: GCP, edge &amp; identity</h3>
-            <ul class="pill-list"><li>Cloud Run</li><li>GKE</li><li>Global load balancing</li><li>Cloud Armor</li><li>Pub/Sub</li><li>BigQuery</li><li>Cloud Build</li><li>Cloud Monitoring</li><li>Cloudflare</li><li>Microsoft Entra ID</li><li>OIDC</li><li>SAML</li><li>Site-to-site VPN</li></ul>
-          </section>
-          <section class="skill-group" data-code="CTR">
-            <h3>Containers &amp; orchestration</h3>
-            <ul class="pill-list"><li>Docker</li><li>buildx</li><li>Kubernetes</li><li>Helm</li><li>ECS task design</li><li>Container health checks</li><li>Deployment circuit breakers</li><li>ECR lifecycle &amp; immutable tags</li><li>One-off task tooling</li><li>Istio</li></ul>
-          </section>
-          <section class="skill-group" data-code="API">
-            <h3>API gateway</h3>
-            <ul class="pill-list"><li>Kong OSS 3.5</li><li>Custom Lua plugins</li><li>OpenResty</li><li>Router &amp; plugin priority internals</li><li>OAuth2</li><li>JWT validation</li><li>Rate limiting</li><li>WebSocket proxying</li><li>mTLS</li><li>WSO2 Micro Integrator</li></ul>
-          </section>
-          <section class="skill-group" data-code="OBS">
-            <h3>Observability</h3>
-            <ul class="pill-list"><li>Grafana Loki</li><li>LogQL</li><li>Grafana</li><li>Prometheus</li><li>Pushgateway</li><li>Fluent Bit / FireLens</li><li>OpenTelemetry Collector</li><li>Datadog APM</li><li>CloudWatch metrics &amp; alarms</li><li>Access-log analysis</li><li>Jaeger</li></ul>
-          </section>
-          <section class="skill-group" data-code="SEC">
-            <h3>DevSecOps &amp; security</h3>
-            <ul class="pill-list"><li>Semgrep</li><li>Gitleaks</li><li>SonarQube</li><li>Trivy</li><li>DefectDojo</li><li>Burp Suite</li><li>Incident response &amp; forensics</li><li>Access-rule testing</li><li>Least-privilege IAM &amp; security groups</li><li>Secret management</li><li>Android reverse engineering</li><li>Frida</li><li>PCI DSS</li></ul>
-          </section>
-          <section class="skill-group" data-code="CI">
-            <h3>CI/CD</h3>
-            <ul class="pill-list"><li>GitHub Actions</li><li>Reusable workflows</li><li>Self-hosted ephemeral runners</li><li>CodePipeline</li><li>CodeBuild</li><li>CodeDeploy blue/green</li><li>Jenkins</li><li>Cloud Build</li><li>Liquibase</li><li>Rollback planning</li></ul>
-          </section>
-          <section class="skill-group" data-code="IaC">
-            <h3>Infrastructure as code</h3>
-            <ul class="pill-list"><li>Terraform</li><li>Module design</li><li>Layered remote state</li><li>Import &amp; plan-only verification</li><li>Drift analysis</li><li>YAML service catalogues</li><li>Ansible</li></ul>
-          </section>
-          <section class="skill-group" data-code="DB">
-            <h3>Data stores &amp; messaging</h3>
-            <ul class="pill-list"><li>PostgreSQL</li><li>PostgreSQL internals &amp; tuning</li><li>pgvector</li><li>MySQL</li><li>Redis / Valkey</li><li>Elasticsearch</li><li>DynamoDB</li><li>BigQuery</li><li>Kafka</li><li>Alembic migrations</li></ul>
-          </section>
-          <section class="skill-group" data-code="AI">
-            <h3>AI &amp; machine learning</h3>
-            <ul class="pill-list"><li>Retrieval-augmented generation</li><li>Embeddings services</li><li>Self-hosted LLMs on GPU</li><li>LangGraph</li><li>Multi-agent systems</li><li>Kubeflow</li><li>MLflow</li><li>KubeRay</li><li>PyTorch</li><li>Statistical risk control</li><li>Monte Carlo simulation</li></ul>
-          </section>
-          <section class="skill-group" data-code="FIN">
-            <h3>FinOps</h3>
-            <ul class="pill-list"><li>Bill decomposition</li><li>Cost allocation without tags</li><li>Savings Plans &amp; reserved capacity</li><li>Right-sizing</li><li>Anomaly attribution</li><li>Off-hours scheduling</li><li>Storage lifecycle</li><li>Cost modelling</li><li>Capacity forecasting</li></ul>
-          </section>
-          <section class="skill-group" data-code="DEV">
-            <h3>Languages</h3>
-            <ul class="pill-list"><li>Python</li><li>Bash</li><li>SQL</li><li>HCL</li><li>Lua</li><li>PowerShell</li><li>FastAPI</li><li>Reads and fixes Java / Spring Boot</li><li>Reads and fixes Node.js, React, Vue</li></ul>
-          </section>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============================ EXPERIENCE ============================ -->
-  <section id="experience" class="section">
+  <section id="experience" class="section section-alt">
     <div class="container">
       <div class="section-head">
-        <span class="kicker" data-n="05" data-r="V">Experience</span>
+        <span class="kicker" data-n="06" data-r="VI">Experience</span>
         <h2>Where the work was done.</h2>
       </div>
       <div class="timeline">
@@ -663,12 +800,28 @@
           </div>
           <ul class="tl-points">
             <li>Manage and lead the DevOps team, five people, across AWS and GCP at a digital-only bank.</li>
-            <li>Built the self-hosted logging platform on Grafana Loki and moved 26 production services onto it with measured parity.</li>
-            <li>Migrated the Kong API gateway from Kubernetes to ECS across four environments.</li>
+            <li>Built the self-hosted logging platform on Grafana Loki and moved production services onto it with measured line-count parity.</li>
+            <li>Migrated the Kong API gateway from Kubernetes to ECS across every environment.</li>
             <li>Own the DevSecOps programme: secret scanning, static analysis, image scanning and one vulnerability backlog, available to every repository.</li>
             <li>Do the cloud cost analysis: bill decomposition, a savings catalogue, off-hours scheduling and a read-only cost agent.</li>
-            <li>Stood up the infrastructure for a conversational banking assistant, including retrieval and a self-hosted model on GPU.</li>
-            <li>Earlier: the machine-learning platform on Kubernetes, event-driven data pipelines, private connectivity between the two clouds, and application monitoring across 100+ microservices.</li>
+            <li>Built the serving platform for a retrieval-augmented banking assistant in test: embeddings, pgvector and a self-hosted language model on GPU.</li>
+            <li>Built multi-agent systems for incident investigation and cloud cost audit, with an adversarial reviewer agent.</li>
+            <li>Deployed and operate the ML services behind onboarding and analytics: face matching, liveness, face de-duplication and a behavioural segmentation model.</li>
+            <li>Ran mobile application security assessments on our own test builds and drafted the dynamic pinning and app attestation design that came out of them.</li>
+            <li>Also: event-driven data pipelines, private connectivity between the two clouds, and application monitoring across the microservice estate.</li>
+          </ul>
+        </article>
+        <article class="tl-item">
+          <div class="tl-marker" aria-hidden="true"></div>
+          <div class="tl-head">
+            <h3>Drone Engineering Programme</h3>
+            <span class="tl-meta">Corizo, on Drona Aviation's Pluto platform · Jun 2025 — Nov 2025</span>
+          </div>
+          <ul class="tl-points">
+            <li>Built a quadcopter from parts: frame, motors, propellers, flight controller, battery and receiver, then calibrated it and flashed its firmware.</li>
+            <li>Logged 100+ hours of flight time, and tuned the craft to hold steady in heavy wind and through radio signal disturbance.</li>
+            <li>Worked through the control loop from first principles: accelerometer and gyro for attitude, magnetometer and barometer for heading and height, and how motor speeds close the loop.</li>
+            <li>Programmed flight behaviours on the controller and ran the sensor experiments: distance and time-of-flight sensing, propeller and thrust, motors and batteries.</li>
           </ul>
         </article>
         <article class="tl-item">
@@ -717,10 +870,10 @@
   </section>
 
   <!-- ============================ HOW I WORK ============================ -->
-  <section id="method" class="section section-alt">
+  <section id="method" class="section">
     <div class="container">
       <div class="section-head">
-        <span class="kicker" data-n="06" data-r="VI">Method</span>
+        <span class="kicker" data-n="07" data-r="VII">Method</span>
         <h2>How I work.</h2>
       </div>
       <div class="method-grid">
@@ -744,11 +897,49 @@
     </div>
   </section>
 
+  <!-- ============================ NOW ============================ -->
+  <section id="now" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker" data-n="08" data-r="VIII">Now and next</span>
+        <h2>What I am working toward.</h2>
+        <p class="section-sub">Early or unfinished, and labelled that way. Listed so the direction is clear.</p>
+      </div>
+      <div class="now-grid">
+        <article class="now-card">
+          <span class="now-state">Started</span>
+          <h3>Quantum computing, from the mathematics up</h3>
+          <p>I am building the foundations properly before touching a framework. I set up an eleven-stage curriculum that runs from number foundations through linear algebra, probability and information theory to Hilbert spaces, tensor products, qubits, gates and measurement, with an agent-taught course, one idea per lesson. I am at the start: the first lessons are arithmetic foundations.</p>
+          <ul class="pill-list"><li>Number foundations (current)</li><li>Linear algebra (planned)</li><li>Quantum mathematics (planned)</li><li>Qiskit / Cirq / PennyLane (planned)</li></ul>
+        </article>
+        <article class="now-card">
+          <span class="now-state">Direction</span>
+          <h3>Doctoral research in quantum computing</h3>
+          <p>The M.Tech closes in 2026. The next step I am preparing for is doctoral research in quantum computing, with quantum algorithms and quantum machine learning as the areas of interest.</p>
+          <ul class="pill-list"><li>Quantum algorithms</li><li>Quantum machine learning</li></ul>
+        </article>
+        <article class="now-card">
+          <span class="now-state">Design study</span>
+          <h3>Private language-model platforms</h3>
+          <p>Studying how an organisation could run its own models: retrieval with a knowledge graph, a shared answer memory so a question is solved once, and the trade-off between owned hardware and cloud for privacy and cost.</p>
+          <ul class="pill-list"><li>RAG + knowledge graph</li><li>Model serving</li><li>Fine-tuning and evaluation (planned)</li><li>Agentic operations</li></ul>
+        </article>
+        <article class="now-card">
+          <span class="now-state">Paused, resuming</span>
+          <h3>The infrastructure time-bomb study</h3>
+          <p>Extending the pilot into a proper empirical study: human validation of the labels, a lab that produces both failures and survivals, and a predictor for faults with a known clock.</p>
+          <ul class="pill-list"><li>Failure taxonomy</li><li>Labelled dataset</li><li>Lab reproduction</li></ul>
+          <a class="ai-link" href="#research">See the pilot &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================ CONTACT ============================ -->
   <section id="contact" class="section">
     <div class="container">
       <div class="section-head">
-        <span class="kicker" data-n="07" data-r="VII">Contact</span>
+        <span class="kicker" data-n="09" data-r="IX">Contact</span>
         <h2>Get in touch.</h2>
       </div>
       <div class="contact-card">
@@ -779,7 +970,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div>&copy; <span id="year">2026</span> Karthick Raja Chinnathambi</div>
-      <div class="footer-meta">Hand-written HTML, CSS and JavaScript · No trackers · Original theme artwork</div>
+      <div class="footer-meta">Views are my own, not my employer's · Plain HTML, CSS and JavaScript, no framework · No analytics, no cookies</div>
     </div>
   </footer>
 
