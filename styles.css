@@ -672,10 +672,9 @@ html[data-skin='plain'] .emblem-art { display: block; }
 html[data-skin='plain'] .emblem-rings { display: none; }
 
 /* ============================================================ Original KR badges per skin */
-html[data-skin='dial'] .core { inset: 31%; border: 0; background: var(--brand); box-shadow: 0 0 0 8px #050805, 0 0 0 11px var(--brand), 0 0 36px rgba(125, 255, 79, 0.45); }
-html[data-skin='dial'] .core span { color: #041204; letter-spacing: 0.02em; }
-html[data-skin='dial'] .ring-c { inset: 16%; }
 html[data-skin='grimoire'] .core { inset: 29%; transform: none; border: 0; border-radius: 0; background: linear-gradient(165deg, #ecd08a, #b48a34); clip-path: polygon(50% 0, 100% 13%, 100% 58%, 50% 100%, 0 58%, 0 13%); box-shadow: none; }
 html[data-skin='grimoire'] .core span { transform: none; color: #1a1206; }
 html[data-skin='grimoire'] .hero-emblem::after { content: ''; position: absolute; inset: 25%; clip-path: polygon(50% 0, 100% 13%, 100% 58%, 50% 100%, 0 58%, 0 13%); background: rgba(212, 169, 78, 0.22); z-index: 0; }
 html[data-skin='grimoire'] .core { z-index: 1; }
+
+.briefs + .diagram { margin-top: 18px; }
