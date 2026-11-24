@@ -4,15 +4,15 @@
   var root = document.documentElement;
 
   // ---------- Skin switch (persisted per browser) ----------
-  var SKINS = { dial: 'Xeno-Dial', grimoire: 'Grimoire', nightfall: 'Nightfall' };
-  var ORDER = ['dial', 'grimoire', 'nightfall'];
-  var THEME = { dial: '#050805', grimoire: '#0c090d', nightfall: '#04050c' };
+  var SKINS = { plain: 'Daylight', dial: 'Xeno-Dial', grimoire: 'Grimoire', nightfall: 'Nightfall' };
+  var ORDER = ['plain', 'dial', 'grimoire', 'nightfall'];
+  var THEME = { plain: '#ffffff', dial: '#050805', grimoire: '#0c090d', nightfall: '#04050c' };
   var skinToggle = document.getElementById('skinToggle');
   var skinLabel = document.getElementById('skinLabel');
   var themeMeta = document.querySelector('meta[name="theme-color"]');
 
   function applySkin(skin) {
-    if (!SKINS[skin]) skin = 'dial';
+    if (!SKINS[skin]) skin = 'plain';
     root.setAttribute('data-skin', skin);
     if (skinLabel) skinLabel.textContent = SKINS[skin];
     if (themeMeta) themeMeta.setAttribute('content', THEME[skin]);
@@ -25,7 +25,7 @@
       var i = ORDER.indexOf(root.getAttribute('data-skin'));
       var next = ORDER[(i + 1) % ORDER.length];
       applySkin(next);
-      try { localStorage.setItem('skin', next); } catch (e) { /* storage unavailable */ }
+      try { localStorage.setItem('skin2', next); } catch (e) { /* storage unavailable */ }
     });
   }
 
@@ -116,7 +116,7 @@
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce) {
-    var targets = document.querySelectorAll('.section-head, .case, .brief, .ai-card, .now-card, .readout, .note, .paper, .ideas, .tl-item, .cred-col, .method, .contact-card, .skills-wrap');
+    var targets = document.querySelectorAll('.section-head, .case, .brief, .diagram, .ai-card, .now-card, .readout, .note, .paper, .ideas, .tl-item, .cred-col, .method, .contact-card, .skills-wrap');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
